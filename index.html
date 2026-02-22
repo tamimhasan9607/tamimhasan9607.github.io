@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamim Hasan | Tech Innovator & ScrumMaster</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 3D Background Elements -->
+    <div class="bg-3d-container">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-text">Tamim</span>
-                <span class="logo-dot">.</span>
+                <div class="logo-icon">T</div>
+                <span class="logo-text">amim</span>
             </a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
@@ -25,65 +34,86 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-greeting">Hi, I'm</div>
-                <h1 class="hero-title">Tamim Hasan</h1>
-                <div class="hero-subtitle">
-                    <span class="typing-text"></span>
-                    <span class="cursor">|</span>
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Available for opportunities</span>
+                </div>
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Tamim Hasan</span>
+                </h1>
+                <div class="hero-roles">
+                    <span class="role-item active">ScrumMaster®</span>
+                    <span class="role-separator">•</span>
+                    <span class="role-item">Tech Innovator</span>
+                    <span class="role-separator">•</span>
+                    <span class="role-item">Data Scientist</span>
                 </div>
                 <p class="hero-description">
-                    A certified <strong>ScrumMaster®</strong>, tech innovator, and community-driven leader 
-                    passionate about turning data and empathy into real-world impact.
+                    Turning data and empathy into real-world impact. 
+                    Certified ScrumMaster® passionate about building solutions that matter.
                 </p>
-                <div class="hero-buttons">
+                <div class="hero-actions">
                     <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
+                        <span>View Projects</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Get In Touch</span>
+                    <a href="#contact" class="btn btn-outline">
                         <i class="fas fa-envelope"></i>
+                        <span>Get in Touch</span>
                     </a>
                 </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/tamimhasan9607" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-num">15+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num">6.75</span>
+                        <span class="stat-label">GPA</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num">3x</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="image-frame">
-                    <div class="frame-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Your Photo</span>
+            <div class="hero-visual">
+                <div class="profile-3d">
+                    <div class="profile-card">
+                        <div class="card-glass">
+                            <div class="image-placeholder">
+                                <div class="placeholder-3d">
+                                    <i class="fas fa-user"></i>
+                                    <span>Your Photo</span>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="floating-icons">
+                            <div class="float-icon icon-1"><i class="fas fa-code"></i></div>
+                            <div class="float-icon icon-2"><i class="fas fa-chart-line"></i></div>
+                            <div class="float-icon icon-3"><i class="fas fa-vr-cardboard"></i></div>
+                            <div class="float-icon icon-4"><i class="fas fa-brain"></i></div>
+                        </div>
                     </div>
-                    <div class="frame-decoration"></div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
+        <div class="scroll-hint">
+            <div class="mouse-3d">
                 <div class="wheel"></div>
             </div>
-            <span>Scroll Down</span>
         </div>
     </section>
 
@@ -92,58 +122,44 @@
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">About Me</span>
-                <h2 class="section-title">Building With Purpose,<br>Leading With Empathy</h2>
+                <h2 class="section-title">Building With Purpose</h2>
             </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="image-card">
-                        <div class="card-placeholder">
-                            <i class="fas fa-image"></i>
-                            <span>About Image</span>
+            <div class="about-grid">
+                <div class="about-image-3d">
+                    <div class="image-stack">
+                        <div class="stack-card card-main">
+                            <div class="placeholder-frame">
+                                <i class="fas fa-image"></i>
+                                <span>About Photo</span>
+                            </div>
                         </div>
+                        <div class="stack-card card-back"></div>
+                        <div class="stack-card card-accent"></div>
                     </div>
-                    <div class="experience-badge">
-                        <span class="badge-number">5+</span>
-                        <span class="badge-text">Years<br>Experience</span>
+                    <div class="experience-float">
+                        <div class="exp-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="exp-text">
+                            <span class="exp-num">5+</span>
+                            <span class="exp-label">Years Experience</span>
+                        </div>
                     </div>
                 </div>
-                <div class="about-text">
-                    <div class="about-block">
-                        <h3>Education & Academic Excellence</h3>
-                        <p>
-                            From majoring in <strong>Machine Learning</strong> during my <strong>Bachelor of Computer Science (Magna Cum Laude)</strong> 
-                            to graduating with distinction in my <strong>Master's (GPA 6.75/7.0)</strong> at Federation University, 
-                            I've built solutions that matter.
-                        </p>
-                    </div>
-                    <div class="about-block">
-                        <h3>Leadership & Impact</h3>
-                        <p>
-                            Recognized with <strong>three Federation Advantage Awards</strong> and selected to 
-                            <strong>represent FedUni at TEQSA 2024</strong>, I've grown from a student leader to 
-                            <strong>Chair of the Student Senate</strong>, contributing to university strategy, equity, and innovation.
-                        </p>
-                    </div>
-                    <div class="about-block">
-                        <h3>Beyond The Screen</h3>
-                        <p>
-                            I've served as a <strong>Student Residential Advisor</strong>, blog writer, and campaign ambassador. 
-                            I've volunteered across communities — from <strong>RISE Crew</strong> to <strong>BARS</strong>, 
-                            <strong>Salvation Army</strong> to <strong>BRMC</strong>.
-                        </p>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="15">0</span>
-                            <span class="stat-label">Projects</span>
+                <div class="about-content">
+                    <div class="about-blocks">
+                        <div class="info-card">
+                            <div class="card-icon blue"><i class="fas fa-university"></i></div>
+                            <h3>Education Excellence</h3>
+                            <p>Bachelor of Computer Science <strong>(Magna Cum Laude)</strong> with Machine Learning major. Master's degree with <strong>GPA 6.75/7.0</strong> at Federation University.</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="3">0</span>
-                            <span class="stat-label">Awards</span>
+                        <div class="info-card">
+                            <div class="card-icon green"><i class="fas fa-trophy"></i></div>
+                            <h3>Leadership Journey</h3>
+                            <p><strong>3 Federation Advantage Awards</strong>. Selected to represent FedUni at <strong>TEQSA 2024</strong>. Grew from student leader to <strong>Chair of Student Senate</strong>.</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="6">0</span>
-                            <span class="stat-label">GPA/7.0</span>
+                        <div class="info-card">
+                            <div class="card-icon teal"><i class="fas fa-hands-helping"></i></div>
+                            <h3>Community Impact</h3>
+                            <p>Volunteered with <strong>RISE Crew, BARS, Salvation Army, BRMC</strong>. Student Residential Advisor supporting 40+ students.</p>
                         </div>
                     </div>
                 </div>
@@ -157,165 +173,123 @@
             <div class="section-header">
                 <span class="section-tag">Portfolio</span>
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">I've worked on more than 15 projects. Here are my top key projects.</p>
+                <p class="section-subtitle">Innovative solutions across VR, data analytics, and software development</p>
             </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card featured">
-                    <div class="project-image">
-                        <div class="project-placeholder vr-theme">
-                            <i class="fas fa-vr-cardboard"></i>
-                            <span>VR Project Image</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Virtual Reality</span>
-                        <h3 class="project-title">VicHealth Anti-Vaping VR Development</h3>
-                        <p class="project-description">
-                            An immersive educational VR experience developed to raise awareness about vaping using Meta Quest 3, Unity, and Blender.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Unity</span>
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">Blender</span>
-                            <span class="tech-tag">VR</span>
+            <div class="projects-showcase">
+                <!-- Featured Project -->
+                <div class="project-featured">
+                    <div class="featured-visual">
+                        <div class="project-frame vr-gradient">
+                            <div class="frame-3d">
+                                <i class="fas fa-vr-cardboard"></i>
+                                <span>VR Project</span>
+                            </div>
+                            <div class="frame-shadow"></div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder data-theme">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Analytics Image</span>
+                    <div class="featured-content">
+                        <span class="project-tag">Featured Project</span>
+                        <h3 class="project-name">VicHealth Anti-Vaping VR</h3>
+                        <p class="project-desc">An immersive educational VR experience using Meta Quest 3, Unity, and Blender. 8-minute interactive app educating youth on vaping dangers with 3D scenes showing physical impacts.</p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Unity</span>
+                            <span class="tech-pill">C#</span>
+                            <span class="tech-pill">Blender</span>
+                            <span class="tech-pill">VR</span>
                         </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Data Analytics</span>
-                        <h3 class="project-title">Electric Vehicle Adoption Analytics</h3>
-                        <p class="project-description">
-                            Predictive analytics project analyzing EV adoption trends and patterns using machine learning algorithms.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">ML</span>
-                            <span class="tech-tag">Power BI</span>
-                        </div>
+                        <a href="#" class="link-arrow">
+                            <span>View Project</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder business-theme">
-                            <i class="fas fa-sitemap"></i>
-                            <span>BPM Image</span>
+                <!-- Project Grid -->
+                <div class="projects-grid-3d">
+                    <div class="project-card-3d">
+                        <div class="card-face data-gradient">
+                            <div class="face-content">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Image Placeholder</span>
+                            </div>
                         </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Business Process</span>
-                        <h3 class="project-title">Business Process Modelling</h3>
-                        <p class="project-description">
-                            Comprehensive business process analysis and optimization using industry-standard methodologies.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">BPMN</span>
-                            <span class="tech-tag">SAP</span>
-                            <span class="tech-tag">ERP</span>
+                        <div class="card-info">
+                            <span class="card-category">Data Analytics</span>
+                            <h4>EV Adoption Analytics</h4>
+                            <p>Predictive analytics for electric vehicle trends</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder app-theme">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>App Image</span>
+                    <div class="project-card-3d">
+                        <div class="card-face business-gradient">
+                            <div class="face-content">
+                                <i class="fas fa-sitemap"></i>
+                                <span>Image Placeholder</span>
+                            </div>
                         </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">App Development</span>
-                        <h3 class="project-title">Heartland Equestrian Centre App</h3>
-                        <p class="project-description">
-                            Custom mobile application development for equestrian centre management and operations.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Android</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">Firebase</span>
+                        <div class="card-info">
+                            <span class="card-category">Business Process</span>
+                            <h4>Process Modelling</h4>
+                            <p>Enterprise process optimization</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder health-theme">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Healthcare Image</span>
+                    <div class="project-card-3d">
+                        <div class="card-face app-gradient">
+                            <div class="face-content">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Image Placeholder</span>
+                            </div>
                         </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Healthcare AI</span>
-                        <h3 class="project-title">Cardio Predict - Heart Disease Detection</h3>
-                        <p class="project-description">
-                            Web-integrated ML approach for cardiac health surveillance using Explainable AI techniques.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Flask</span>
+                        <div class="card-info">
+                            <span class="card-category">App Development</span>
+                            <h4>Heartland Equestrian App</h4>
+                            <p>Mobile app for equestrian centre</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder blockchain-theme">
-                            <i class="fas fa-link"></i>
-                            <span>Blockchain Image</span>
+                    <div class="project-card-3d">
+                        <div class="card-face health-gradient">
+                            <div class="face-content">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Image Placeholder</span>
+                            </div>
                         </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        <div class="card-info">
+                            <span class="card-category">Healthcare AI</span>
+                            <h4>Cardio Predict</h4>
+                            <p>ML-based cardiac health detection</p>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <span class="project-category">Blockchain</span>
-                        <h3 class="project-title">Sustainable Supply Chain with Blockchain</h3>
-                        <p class="project-description">
-                            Blockchain technology integration for transparent and sustainable supply chain management.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Blockchain</span>
-                            <span class="tech-tag">Smart Contracts</span>
-                            <span class="tech-tag">Ethereum</span>
+
+                    <div class="project-card-3d">
+                        <div class="card-face blockchain-gradient">
+                            <div class="face-content">
+                                <i class="fas fa-link"></i>
+                                <span>Image Placeholder</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-category">Blockchain</span>
+                            <h4>Supply Chain Solution</h4>
+                            <p>Blockchain for sustainable supply chains</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card-3d">
+                        <div class="card-face ml-gradient">
+                            <div class="face-content">
+                                <i class="fas fa-brain"></i>
+                                <span>Image Placeholder</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-category">Deep Learning</span>
+                            <h4>COVID-19 Classifier</h4>
+                            <p>Deep learning for disease classification</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="projects-cta">
-                <a href="https://github.com/tamimhasan9607" target="_blank" class="btn btn-outline">
-                    <span>View All Projects on GitHub</span>
-                    <i class="fab fa-github"></i>
-                </a>
             </div>
         </div>
     </section>
@@ -325,114 +299,67 @@
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Expertise</span>
-                <h2 class="section-title">My Skills & Tools</h2>
+                <h2 class="section-title">Skills & Technologies</h2>
             </div>
-            <div class="skills-container">
-                <!-- Data Science -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon data-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
+            <div class="skills-orbit">
+                <div class="skill-category-3d">
+                    <div class="category-header">
+                        <div class="header-icon data-icon"><i class="fas fa-database"></i></div>
                         <h3>Data Science & Analytics</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Python / Pandas / NumPy</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Machine Learning / Deep Learning</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Power BI / Tableau</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">SQL / MySQL</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
-                        </div>
+                    <div class="skill-pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">Pandas</span>
+                        <span class="pill">NumPy</span>
+                        <span class="pill">Machine Learning</span>
+                        <span class="pill">Deep Learning</span>
+                        <span class="pill">Power BI</span>
+                        <span class="pill">Tableau</span>
+                        <span class="pill">SQL</span>
                     </div>
                 </div>
 
-                <!-- Project Management -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon pm-icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <h3>Project & Product Management</h3>
+                <div class="skill-category-3d">
+                    <div class="category-header">
+                        <div class="header-icon pm-icon"><i class="fas fa-tasks"></i></div>
+                        <h3>Project Management</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Scrum / Agile</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Jira / Kanban</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Product Road Mapping</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Risk Management</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                        </div>
+                    <div class="skill-pills">
+                        <span class="pill highlight">Scrum</span>
+                        <span class="pill">Agile</span>
+                        <span class="pill">Jira</span>
+                        <span class="pill">Kanban</span>
+                        <span class="pill">Road Mapping</span>
+                        <span class="pill">Risk Management</span>
                     </div>
                 </div>
 
-                <!-- Development -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon dev-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Software Development</h3>
+                <div class="skill-category-3d">
+                    <div class="category-header">
+                        <div class="header-icon dev-icon"><i class="fas fa-code"></i></div>
+                        <h3>Development</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">HTML / CSS / JavaScript</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">PHP / Laravel</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Unity / C# / VR</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Git / GitHub</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                        </div>
+                    <div class="skill-pills">
+                        <span class="pill">HTML/CSS</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">PHP</span>
+                        <span class="pill">Laravel</span>
+                        <span class="pill">Unity</span>
+                        <span class="pill">C#</span>
+                        <span class="pill">Git</span>
                     </div>
                 </div>
 
-                <!-- ERP -->
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon erp-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
+                <div class="skill-category-3d">
+                    <div class="category-header">
+                        <div class="header-icon erp-icon"><i class="fas fa-cogs"></i></div>
                         <h3>Enterprise Systems</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">SAP S/4HANA</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">SAP Business Warehouse</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="82"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">ERP Systems</span>
-                            <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                        </div>
+                    <div class="skill-pills">
+                        <span class="pill">SAP S/4HANA</span>
+                        <span class="pill">SAP BW</span>
+                        <span class="pill">ERP</span>
+                        <span class="pill">Business Intelligence</span>
                     </div>
                 </div>
             </div>
@@ -446,123 +373,60 @@
                 <span class="section-tag">Milestones</span>
                 <h2 class="section-title">Achievements & Recognition</h2>
             </div>
-            <div class="achievements-content">
-                <!-- Awards -->
-                <div class="achievement-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-trophy"></i>
-                        Awards & Recognition
-                    </h3>
-                    <div class="achievement-cards">
-                        <div class="achievement-card">
-                            <div class="achievement-icon gold">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Federation Advantage Awards (x3)</h4>
-                                <p>For Leadership, Communication, and Citizenship</p>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon blue">
-                                <i class="fas fa-vr-cardboard"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>VR Project Commendation</h4>
-                                <p>Recognized by the Executive Dean for project innovation</p>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon purple">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>TEQSA 2024 Delegate</h4>
-                                <p>Represented Federation University at the national conference</p>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon green">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Victorian International Education Awards</h4>
-                                <p>Nominated for International Student of the Year - Regional</p>
-                            </div>
+            <div class="achievements-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-dot gold"></div>
+                    <div class="achievement-card-3d">
+                        <div class="card-glass">
+                            <div class="achieve-icon"><i class="fas fa-award"></i></div>
+                            <h4>Federation Advantage Awards ×3</h4>
+                            <p>Leadership, Communication & Citizenship</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Academic -->
-                <div class="achievement-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-graduation-cap"></i>
-                        Academic Excellence
-                    </h3>
-                    <div class="achievement-cards">
-                        <div class="achievement-card">
-                            <div class="achievement-icon orange">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Master's Degree - GPA 6.75/7.0</h4>
-                                <p>Enterprise Systems & Business Analytics - Federation University</p>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon red">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Bachelor's - Magna Cum Laude</h4>
-                                <p>Computer Science with Machine Learning Major</p>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon teal">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Dean's Commendations (All 4 Semesters)</h4>
-                                <p>Consistent academic excellence across Master's program</p>
-                            </div>
+                <div class="achievement-item">
+                    <div class="achievement-dot blue"></div>
+                    <div class="achievement-card-3d">
+                        <div class="card-glass">
+                            <div class="achieve-icon"><i class="fas fa-vr-cardboard"></i></div>
+                            <h4>VR Project Commendation</h4>
+                            <p>Recognized by Executive Dean for innovation</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Leadership -->
-                <div class="achievement-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-users"></i>
-                        Leadership & Community
-                    </h3>
-                    <div class="achievement-cards">
-                        <div class="achievement-card">
-                            <div class="achievement-icon indigo">
-                                <i class="fas fa-gavel"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Chair - Student Senate</h4>
-                                <p>Led university-wide student initiatives and strategy</p>
-                            </div>
+                <div class="achievement-item">
+                    <div class="achievement-dot purple"></div>
+                    <div class="achievement-card-3d">
+                        <div class="card-glass">
+                            <div class="achieve-icon"><i class="fas fa-university"></i></div>
+                            <h4>TEQSA 2024 Delegate</h4>
+                            <p>Represented Federation University nationally</p>
                         </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon pink">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Student Residential Advisor</h4>
-                                <p>Supported 40+ students with wellbeing and events</p>
-                            </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-dot green"></div>
+                    <div class="achievement-card-3d">
+                        <div class="card-glass">
+                            <div class="achieve-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h4>Master's GPA 6.75/7.0</h4>
+                            <p>Enterprise Systems & Business Analytics</p>
                         </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon cyan">
-                                <i class="fas fa-hands-helping"></i>
-                            </div>
-                            <div class="achievement-info">
-                                <h4>Volunteer Work</h4>
-                                <p>BRMC, Salvation Army, BARS, Rise Crew</p>
-                            </div>
+                    </div>
+                </div>
+
+                <div class="achievement-item">
+                    <div class="achievement-dot teal"></div>
+                    <div class="achievement-card-3d">
+                        <div class="card-glass">
+                            <div class="achieve-icon"><i class="fas fa-gavel"></i></div>
+                            <h4>Chair - Student Senate</h4>
+                            <p>Led university-wide student initiatives</p>
                         </div>
                     </div>
                 </div>
@@ -575,44 +439,44 @@
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Personal</span>
-                <h2 class="section-title">Interests & Hobbies</h2>
+                <h2 class="section-title">Beyond The Screen</h2>
             </div>
-            <div class="interests-grid">
-                <div class="interest-card">
-                    <div class="interest-icon">
+            <div class="interests-orbit">
+                <div class="interest-orb">
+                    <div class="orb-inner">
                         <i class="fas fa-futbol"></i>
                     </div>
-                    <h3>Sports</h3>
+                    <span>Sports</span>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
+                <div class="interest-orb">
+                    <div class="orb-inner">
                         <i class="fas fa-camera"></i>
                     </div>
-                    <h3>Photography</h3>
+                    <span>Photography</span>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
+                <div class="interest-orb">
+                    <div class="orb-inner">
                         <i class="fas fa-plane"></i>
                     </div>
-                    <h3>Travel</h3>
+                    <span>Travel</span>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
+                <div class="interest-orb">
+                    <div class="orb-inner">
                         <i class="fas fa-film"></i>
                     </div>
-                    <h3>Movies</h3>
+                    <span>Movies</span>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
+                <div class="interest-orb">
+                    <div class="orb-inner">
                         <i class="fas fa-music"></i>
                     </div>
-                    <h3>Music</h3>
+                    <span>Music</span>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">
+                <div class="interest-orb">
+                    <div class="orb-inner">
                         <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Volunteering</h3>
+                    <span>Volunteering</span>
                 </div>
             </div>
         </div>
@@ -621,70 +485,54 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="section-container">
-            <div class="contact-container">
-                <div class="contact-info">
+            <div class="contact-wrapper">
+                <div class="contact-info-3d">
                     <div class="section-header left">
                         <span class="section-tag">Contact</span>
-                        <h2 class="section-title">Let's Work Together</h2>
-                        <p class="section-subtitle">
-                            Whether you have a project in mind or just want to chat, 
-                            I'm always open to new opportunities and connections.
-                        </p>
+                        <h2 class="section-title">Let's Connect</h2>
+                        <p class="section-subtitle">Have a project in mind? Let's create something amazing together.</p>
                     </div>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
+                    <div class="contact-methods">
+                        <div class="method-card">
+                            <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="method-text">
                                 <span class="label">Email</span>
-                                <a href="mailto:your.email@example.com">your.email@example.com</a>
+                                <a href="mailto:hello@tamimhasan.me">hello@tamimhasan.me</a>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
+                        <div class="method-card">
+                            <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="method-text">
                                 <span class="label">Location</span>
-                                <span>Ballarat, Victoria, Australia</span>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <div class="contact-text">
-                                <span class="label">Availability</span>
-                                <span>Open to Opportunities</span>
+                                <span>Ballarat, Australia</span>
                             </div>
                         </div>
                     </div>
-                    <div class="contact-socials">
-                        <a href="https://github.com/tamimhasan9607" target="_blank" class="social-btn">
+                    <div class="social-orbit">
+                        <a href="https://github.com/tamimhasan9607" target="_blank" class="social-orb">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-btn">
+                        <a href="#" class="social-orb">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="social-btn">
+                        <a href="#" class="social-orb">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
+                <div class="contact-form-3d">
+                    <form id="contactForm" class="form-glass">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <input type="text" id="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            <input type="email" id="email" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            <textarea id="message" rows="4" placeholder="Tell me about your project..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
                             <span>Send Message</span>
@@ -702,8 +550,8 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#home" class="footer-logo">
-                        <span class="logo-text">Tamim</span>
-                        <span class="logo-dot">.</span>
+                        <div class="logo-icon">T</div>
+                        <span>amim</span>
                     </a>
                     <p>Building with purpose, leading with empathy.</p>
                 </div>
@@ -717,13 +565,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Tamim Hasan. All rights reserved.</p>
-                <p>Designed & Built with <i class="fas fa-heart"></i></p>
+                <p>&copy; 2025 Tamim Hasan. Crafted with care.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span>Message sent successfully!</span>
