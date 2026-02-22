@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamim Hasan | Tech Innovator & ScrumMaster</title>
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 3D Background Elements -->
+    <!-- ========================================
+         BACKGROUND ELEMENTS
+         ======================================== -->
     <div class="bg-3d-container">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
@@ -18,13 +25,16 @@
         <div class="grid-pattern"></div>
     </div>
 
-    <!-- Navigation -->
+    <!-- ========================================
+         NAVIGATION
+         ======================================== -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
                 <div class="logo-icon">T</div>
                 <span class="logo-text">amim</span>
             </a>
+            
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -33,15 +43,27 @@
                 <li><a href="#achievements" class="nav-link">Achievements</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <div class="toggle-circle"></div>
+                </button>
+                
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -49,9 +71,11 @@
                     <span class="badge-dot"></span>
                     <span>Available for opportunities</span>
                 </div>
+                
                 <h1 class="hero-title">
                     Hi, I'm <span class="gradient-text">Tamim Hasan</span>
                 </h1>
+                
                 <div class="hero-roles">
                     <span class="role-item active">ScrumMaster®</span>
                     <span class="role-separator">•</span>
@@ -59,10 +83,12 @@
                     <span class="role-separator">•</span>
                     <span class="role-item">Data Scientist</span>
                 </div>
+                
                 <p class="hero-description">
                     Turning data and empathy into real-world impact. 
                     Certified ScrumMaster® passionate about building solutions that matter.
                 </p>
+                
                 <div class="hero-actions">
                     <a href="#projects" class="btn btn-primary">
                         <span>View Projects</span>
@@ -73,21 +99,23 @@
                         <span>Get in Touch</span>
                     </a>
                 </div>
+                
                 <div class="hero-stats">
                     <div class="stat-box">
-                        <span class="stat-num">15+</span>
+                        <span class="stat-num" data-count="15">0</span>
                         <span class="stat-label">Projects</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-num">6.75</span>
+                        <span class="stat-num" data-count="6.75" data-decimal="true">0</span>
                         <span class="stat-label">GPA</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-num">3x</span>
+                        <span class="stat-num" data-count="3">0</span>
                         <span class="stat-label">Awards</span>
                     </div>
                 </div>
             </div>
+            
             <div class="hero-visual">
                 <div class="profile-3d">
                     <div class="profile-card">
@@ -110,6 +138,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="scroll-hint">
             <div class="mouse-3d">
                 <div class="wheel"></div>
@@ -117,13 +146,17 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ========================================
+         ABOUT SECTION
+         ======================================== -->
     <section id="about" class="about">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">About Me</span>
                 <h2 class="section-title">Building With Purpose</h2>
+                <p class="section-subtitle">Passionate about technology, leadership, and community impact</p>
             </div>
+            
             <div class="about-grid">
                 <div class="about-image-3d">
                     <div class="image-stack">
@@ -144,20 +177,32 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="about-content">
                     <div class="about-blocks">
-                        <div class="info-card">
-                            <div class="card-icon blue"><i class="fas fa-university"></i></div>
+                        <!-- Card 1: Education -->
+                        <div class="info-card" data-tilt>
+                            <div class="card-icon blue">
+                                <i class="fas fa-university"></i>
+                            </div>
                             <h3>Education Excellence</h3>
                             <p>Bachelor of Computer Science <strong>(Magna Cum Laude)</strong> with Machine Learning major. Master's degree with <strong>GPA 6.75/7.0</strong> at Federation University.</p>
                         </div>
-                        <div class="info-card">
-                            <div class="card-icon green"><i class="fas fa-trophy"></i></div>
+                        
+                        <!-- Card 2: Leadership -->
+                        <div class="info-card" data-tilt>
+                            <div class="card-icon green">
+                                <i class="fas fa-trophy"></i>
+                            </div>
                             <h3>Leadership Journey</h3>
                             <p><strong>3 Federation Advantage Awards</strong>. Selected to represent FedUni at <strong>TEQSA 2024</strong>. Grew from student leader to <strong>Chair of Student Senate</strong>.</p>
                         </div>
-                        <div class="info-card">
-                            <div class="card-icon teal"><i class="fas fa-hands-helping"></i></div>
+                        
+                        <!-- Card 3: Community -->
+                        <div class="info-card" data-tilt>
+                            <div class="card-icon teal">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
                             <h3>Community Impact</h3>
                             <p>Volunteered with <strong>RISE Crew, BARS, Salvation Army, BRMC</strong>. Student Residential Advisor supporting 40+ students.</p>
                         </div>
@@ -167,7 +212,9 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- ========================================
+         PROJECTS SECTION
+         ======================================== -->
     <section id="projects" class="projects">
         <div class="section-container">
             <div class="section-header">
@@ -175,6 +222,7 @@
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Innovative solutions across VR, data analytics, and software development</p>
             </div>
+            
             <div class="projects-showcase">
                 <!-- Featured Project -->
                 <div class="project-featured">
@@ -182,7 +230,7 @@
                         <div class="project-frame vr-gradient">
                             <div class="frame-3d">
                                 <i class="fas fa-vr-cardboard"></i>
-                                <span>VR Project</span>
+                                <span>VR Experience</span>
                             </div>
                             <div class="frame-shadow"></div>
                         </div>
@@ -204,13 +252,14 @@
                     </div>
                 </div>
 
-                <!-- Project Grid -->
+                <!-- Projects Grid -->
                 <div class="projects-grid-3d">
-                    <div class="project-card-3d">
+                    <!-- Project 1 -->
+                    <div class="project-card-3d" data-category="data">
                         <div class="card-face data-gradient">
                             <div class="face-content">
                                 <i class="fas fa-chart-line"></i>
-                                <span>Image Placeholder</span>
+                                <span>Analytics Dashboard</span>
                             </div>
                         </div>
                         <div class="card-info">
@@ -220,11 +269,12 @@
                         </div>
                     </div>
 
-                    <div class="project-card-3d">
+                    <!-- Project 2 -->
+                    <div class="project-card-3d" data-category="business">
                         <div class="card-face business-gradient">
                             <div class="face-content">
                                 <i class="fas fa-sitemap"></i>
-                                <span>Image Placeholder</span>
+                                <span>Process Map</span>
                             </div>
                         </div>
                         <div class="card-info">
@@ -234,25 +284,27 @@
                         </div>
                     </div>
 
-                    <div class="project-card-3d">
+                    <!-- Project 3 -->
+                    <div class="project-card-3d" data-category="app">
                         <div class="card-face app-gradient">
                             <div class="face-content">
                                 <i class="fas fa-mobile-alt"></i>
-                                <span>Image Placeholder</span>
+                                <span>Mobile App</span>
                             </div>
                         </div>
                         <div class="card-info">
                             <span class="card-category">App Development</span>
-                            <h4>Heartland Equestrian App</h4>
+                            <h4>Heartland Equestrian</h4>
                             <p>Mobile app for equestrian centre</p>
                         </div>
                     </div>
 
-                    <div class="project-card-3d">
+                    <!-- Project 4 -->
+                    <div class="project-card-3d" data-category="health">
                         <div class="card-face health-gradient">
                             <div class="face-content">
                                 <i class="fas fa-heartbeat"></i>
-                                <span>Image Placeholder</span>
+                                <span>AI Healthcare</span>
                             </div>
                         </div>
                         <div class="card-info">
@@ -262,11 +314,12 @@
                         </div>
                     </div>
 
-                    <div class="project-card-3d">
+                    <!-- Project 5 -->
+                    <div class="project-card-3d" data-category="blockchain">
                         <div class="card-face blockchain-gradient">
                             <div class="face-content">
                                 <i class="fas fa-link"></i>
-                                <span>Image Placeholder</span>
+                                <span>Supply Chain</span>
                             </div>
                         </div>
                         <div class="card-info">
@@ -276,11 +329,12 @@
                         </div>
                     </div>
 
-                    <div class="project-card-3d">
+                    <!-- Project 6 -->
+                    <div class="project-card-3d" data-category="ml">
                         <div class="card-face ml-gradient">
                             <div class="face-content">
                                 <i class="fas fa-brain"></i>
-                                <span>Image Placeholder</span>
+                                <span>Deep Learning</span>
                             </div>
                         </div>
                         <div class="card-info">
@@ -294,17 +348,24 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- ========================================
+         SKILLS SECTION
+         ======================================== -->
     <section id="skills" class="skills">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Expertise</span>
                 <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Technologies I work with daily</p>
             </div>
+            
             <div class="skills-orbit">
+                <!-- Skill Category 1 -->
                 <div class="skill-category-3d">
                     <div class="category-header">
-                        <div class="header-icon data-icon"><i class="fas fa-database"></i></div>
+                        <div class="header-icon data-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
                         <h3>Data Science & Analytics</h3>
                     </div>
                     <div class="skill-pills">
@@ -319,9 +380,12 @@
                     </div>
                 </div>
 
+                <!-- Skill Category 2 -->
                 <div class="skill-category-3d">
                     <div class="category-header">
-                        <div class="header-icon pm-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="header-icon pm-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
                         <h3>Project Management</h3>
                     </div>
                     <div class="skill-pills">
@@ -334,9 +398,12 @@
                     </div>
                 </div>
 
+                <!-- Skill Category 3 -->
                 <div class="skill-category-3d">
                     <div class="category-header">
-                        <div class="header-icon dev-icon"><i class="fas fa-code"></i></div>
+                        <div class="header-icon dev-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
                         <h3>Development</h3>
                     </div>
                     <div class="skill-pills">
@@ -350,9 +417,12 @@
                     </div>
                 </div>
 
+                <!-- Skill Category 4 -->
                 <div class="skill-category-3d">
                     <div class="category-header">
-                        <div class="header-icon erp-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="header-icon erp-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
                         <h3>Enterprise Systems</h3>
                     </div>
                     <div class="skill-pills">
@@ -366,67 +436,101 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
+    <!-- ========================================
+         ACHIEVEMENTS SECTION
+         ======================================== -->
     <section id="achievements" class="achievements">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Milestones</span>
                 <h2 class="section-title">Achievements & Recognition</h2>
+                <p class="section-subtitle">Key milestones in my professional journey</p>
             </div>
+            
             <div class="achievements-timeline">
                 <div class="timeline-line"></div>
                 
+                <!-- Achievement 1 -->
                 <div class="achievement-item">
-                    <div class="achievement-dot gold"></div>
+                    <div class="achievement-dot gold">
+                        <i class="fas fa-award"></i>
+                    </div>
                     <div class="achievement-card-3d">
                         <div class="card-glass">
-                            <div class="achieve-icon"><i class="fas fa-award"></i></div>
+                            <div class="achieve-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
                             <h4>Federation Advantage Awards ×3</h4>
                             <p>Leadership, Communication & Citizenship</p>
+                            <span class="achieve-year">2023-2024</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Achievement 2 -->
                 <div class="achievement-item">
-                    <div class="achievement-dot blue"></div>
+                    <div class="achievement-dot blue">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
                     <div class="achievement-card-3d">
                         <div class="card-glass">
-                            <div class="achieve-icon"><i class="fas fa-vr-cardboard"></i></div>
+                            <div class="achieve-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
                             <h4>VR Project Commendation</h4>
-                            <p>Recognized by Executive Dean for innovation</p>
+                            <p>Recognized by Executive Dean for innovation in VR education</p>
+                            <span class="achieve-year">2024</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Achievement 3 -->
                 <div class="achievement-item">
-                    <div class="achievement-dot purple"></div>
+                    <div class="achievement-dot purple">
+                        <i class="fas fa-university"></i>
+                    </div>
                     <div class="achievement-card-3d">
                         <div class="card-glass">
-                            <div class="achieve-icon"><i class="fas fa-university"></i></div>
+                            <div class="achieve-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
                             <h4>TEQSA 2024 Delegate</h4>
-                            <p>Represented Federation University nationally</p>
+                            <p>Represented Federation University at national quality standards conference</p>
+                            <span class="achieve-year">2024</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Achievement 4 -->
                 <div class="achievement-item">
-                    <div class="achievement-dot green"></div>
+                    <div class="achievement-dot green">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <div class="achievement-card-3d">
                         <div class="card-glass">
-                            <div class="achieve-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="achieve-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
                             <h4>Master's GPA 6.75/7.0</h4>
-                            <p>Enterprise Systems & Business Analytics</p>
+                            <p>Enterprise Systems & Business Analytics with High Distinction</p>
+                            <span class="achieve-year">2023</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Achievement 5 -->
                 <div class="achievement-item">
-                    <div class="achievement-dot teal"></div>
+                    <div class="achievement-dot teal">
+                        <i class="fas fa-gavel"></i>
+                    </div>
                     <div class="achievement-card-3d">
                         <div class="card-glass">
-                            <div class="achieve-icon"><i class="fas fa-gavel"></i></div>
+                            <div class="achieve-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
                             <h4>Chair - Student Senate</h4>
-                            <p>Led university-wide student initiatives</p>
+                            <p>Led university-wide student initiatives and governance</p>
+                            <span class="achieve-year">2022-2023</span>
                         </div>
                     </div>
                 </div>
@@ -434,13 +538,17 @@
         </div>
     </section>
 
-    <!-- Interests Section -->
+    <!-- ========================================
+         INTERESTS SECTION
+         ======================================== -->
     <section class="interests">
         <div class="section-container">
             <div class="section-header">
                 <span class="section-tag">Personal</span>
                 <h2 class="section-title">Beyond The Screen</h2>
+                <p class="section-subtitle">What I do when I'm not coding</p>
             </div>
+            
             <div class="interests-orbit">
                 <div class="interest-orb">
                     <div class="orb-inner">
@@ -482,7 +590,9 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ========================================
+         CONTACT SECTION
+         ======================================== -->
     <section id="contact" class="contact">
         <div class="section-container">
             <div class="contact-wrapper">
@@ -492,47 +602,59 @@
                         <h2 class="section-title">Let's Connect</h2>
                         <p class="section-subtitle">Have a project in mind? Let's create something amazing together.</p>
                     </div>
+                    
                     <div class="contact-methods">
                         <div class="method-card">
-                            <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
                             <div class="method-text">
                                 <span class="label">Email</span>
                                 <a href="mailto:hello@tamimhasan.me">hello@tamimhasan.me</a>
                             </div>
                         </div>
+                        
                         <div class="method-card">
-                            <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
                             <div class="method-text">
                                 <span class="label">Location</span>
                                 <span>Ballarat, Australia</span>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="social-orbit">
-                        <a href="https://github.com/tamimhasan9607" target="_blank" class="social-orb">
+                        <a href="https://github.com/tamimhasan9607" target="_blank" class="social-orb" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-orb">
+                        <a href="#" class="social-orb" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="social-orb">
+                        <a href="#" class="social-orb" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
+                
                 <div class="contact-form-3d">
                     <form id="contactForm" class="form-glass">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="John Doe" required>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" rows="4" placeholder="Tell me about your project..." required></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
                             <span>Send Message</span>
@@ -544,7 +666,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-content">
@@ -555,6 +679,7 @@
                     </a>
                     <p>Building with purpose, leading with empathy.</p>
                 </div>
+                
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
@@ -564,17 +689,29 @@
                     <a href="#contact">Contact</a>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2025 Tamim Hasan. Crafted with care.</p>
+                <div class="footer-theme-toggle">
+                    <span>Theme:</span>
+                    <button class="theme-toggle-small" id="footerThemeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Toast -->
+    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span>Message sent successfully!</span>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
