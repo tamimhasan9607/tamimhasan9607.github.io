@@ -1,81 +1,56 @@
-/**
- * TAMIM HASAN PORTFOLIO
- * Features: Dark/Light Theme Toggle, Animations, Form Handling, Scroll Effects
- * Organized in modular sections for easy editing
- */
+// script.js
 
-// ========================================
-// 1. CONFIGURATION
-// ========================================
-
-const CONFIG = {
-    // Animation settings
-    animation: {
-        duration: 600,
-        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-    },
-    
-    // Scroll settings
-    scroll: {
-        offset: 80,
-        threshold: 0.1
-    },
-    
-    // Theme settings
-    theme: {
-        storageKey: 'theme-preference',
-        defaultTheme: 'light'
-    }
-};
-
-// ========================================
-// 2. THEME MANAGEMENT
-// ========================================
+// ============================================
+// THEME MANAGEMENT
+// ============================================
 
 class ThemeManager {
     constructor() {
-        this.toggleBtn = document.getElementById('themeToggle');
-        this.footerToggleBtn = document.getElementById('footerThemeToggle');
+        this.toggleButtons = [
+            document.getElementById('themeToggle'),
+            document.getElementById('footerThemeToggle')
+        ];
         this.html = document.documentElement;
-        this.currentTheme = this.getStoredTheme() || CONFIG.theme.defaultTheme;
+        this.currentTheme = this.getStoredTheme() || 'light';
         
         this.init();
     }
     
     init() {
-        // Apply initial theme
         this.applyTheme(this.currentTheme);
         
-        // Event listeners
-        if (this.toggleBtn) {
-            this.toggleBtn.addEventListener('click', () => this.toggle());
-        }
+        this.toggleButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => this.toggle());
+            }
+        });
         
-        if (this.footerToggleBtn) {
-            this.footerToggleBtn.addEventListener('click', () => this.toggle());
-        }
-        
-        // Check system preference on first visit
+        // Check system preference
         if (!this.getStoredTheme()) {
-            this.checkSystemPreference();
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                this.applyTheme('dark');
+                this.storeTheme('dark');
+            }
         }
     }
     
     getStoredTheme() {
-        return localStorage.getItem(CONFIG.theme.storageKey);
+        return localStorage.getItem('theme');
     }
     
     storeTheme(theme) {
-        localStorage.setItem(CONFIG.theme.storageKey, theme);
+        localStorage.setItem('theme', theme);
     }
     
     applyTheme(theme) {
         this.html.setAttribute('data-theme', theme);
         this.currentTheme = theme;
         
-        // Update footer button icon
-        if (this.footerToggleBtn) {
-            const icon = this.footerToggleBtn.querySelector('i');
+        // Update footer button icon if exists
+        const footerBtn = document.getElementById('footerThemeToggle');
+        if (footerBtn) {
+            const icon = footerBtn.querySelector('i');
             if (icon) {
                 icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
             }
@@ -86,34 +61,19 @@ class ThemeManager {
         const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
         this.applyTheme(newTheme);
         this.storeTheme(newTheme);
-        
-        // Add toggle animation
-        document.body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
-        setTimeout(() => {
-            document.body.style.transition = '';
-        }, 500);
-    }
-    
-    checkSystemPreference() {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (prefersDark) {
-            this.applyTheme('dark');
-            this.storeTheme('dark');
-        }
     }
 }
 
-// ========================================
-// 3. NAVIGATION MANAGEMENT
-// ========================================
+// ============================================
+// NAVIGATION MANAGEMENT
+// ============================================
 
 class NavigationManager {
     constructor() {
-        this.navbar = document.querySelector('.navbar');
-        this.hamburger = document.querySelector('.hamburger');
-        this.navMenu = document.querySelector('.nav-menu');
+        this.navbar = document.getElementById('navbar');
+        this.hamburger = document.getElementById('hamburger');
+        this.navMenu = document.getElementById('navMenu');
         this.navLinks = document.querySelectorAll('.nav-link');
-        this.sections = document.querySelectorAll('section[id]');
         this.scrollTopBtn = document.getElementById('scrollTop');
         
         this.init();
@@ -121,14 +81,14 @@ class NavigationManager {
     
     init() {
         // Scroll effects
-        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
         
         // Mobile menu
         if (this.hamburger) {
             this.hamburger.addEventListener('click', () => this.toggleMenu());
         }
         
-        // Close menu on link click
+        // Nav links
         this.navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 this.closeMenu();
@@ -136,14 +96,14 @@ class NavigationManager {
             });
         });
         
-        // Scroll to top
+        // Scroll top
         if (this.scrollTopBtn) {
             this.scrollTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
         
-        // Keyboard navigation
+        // Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') this.closeMenu();
         });
@@ -159,7 +119,7 @@ class NavigationManager {
             this.navbar.classList.remove('scrolled');
         }
         
-        // Scroll to top button
+        // Scroll top button
         if (this.scrollTopBtn) {
             if (scrollY > 500) {
                 this.scrollTopBtn.classList.add('visible');
@@ -168,15 +128,16 @@ class NavigationManager {
             }
         }
         
-        // Active nav link
+        // Active link
         this.updateActiveLink(scrollY);
     }
     
     updateActiveLink(scrollY) {
+        const sections = document.querySelectorAll('section[id]');
         let current = '';
         
-        this.sections.forEach(section => {
-            const sectionTop = section.offsetTop - CONFIG.scroll.offset - 100;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
             if (scrollY >= sectionTop) {
                 current = section.getAttribute('id');
             }
@@ -208,7 +169,7 @@ class NavigationManager {
         const target = document.querySelector(targetId);
         
         if (target) {
-            const headerOffset = CONFIG.scroll.offset;
+            const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -220,130 +181,89 @@ class NavigationManager {
     }
 }
 
-// ========================================
-// 4. ANIMATION MANAGER
-// ========================================
+// ============================================
+// ANIMATION MANAGER (Intersection Observer)
+// ============================================
 
 class AnimationManager {
     constructor() {
-        this.initParallax();
-        this.initRevealAnimations();
-        this.init3DTilt();
-        this.initCounters();
+        this.animatedElements = document.querySelectorAll('[data-animate]');
+        this.counters = document.querySelectorAll('.stat-number');
+        
+        this.init();
     }
     
-    initParallax() {
-        const shapes = document.querySelectorAll('.floating-shape');
-        
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.1;
-                shape.style.transform = `translateY(${scrollY * speed}px)`;
-            });
-        });
-        
-        // Mouse parallax for hero
-        const profile3d = document.querySelector('.profile-3d');
-        if (profile3d && window.innerWidth > 768) {
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-                const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-                profile3d.style.transform = `rotateY(${mouseX}deg) rotateX(${-mouseY}deg)`;
-            });
-        }
-    }
-    
-    initRevealAnimations() {
-        const revealElements = document.querySelectorAll(
-            '.info-card, .project-card-3d, .skill-category-3d, .interest-orb, .achievement-item'
-        );
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { 
-            threshold: CONFIG.scroll.threshold,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        revealElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s ease, transform 0.6s ease`;
-            observer.observe(el);
-        });
-    }
-    
-    init3DTilt() {
-        const cards = document.querySelectorAll('[data-tilt], .project-card-3d, .skill-category-3d');
-        
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                if (window.innerWidth <= 768) return;
-                
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-            });
+    init() {
+        // Scroll animations
+        if (this.animatedElements.length > 0) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.1
+            };
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-            });
-        });
-    }
-    
-    initCounters() {
-        const counters = document.querySelectorAll('.stat-num');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.getAttribute('data-delay') || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            this.animatedElements.forEach(el => observer.observe(el));
+        }
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animateCounter(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        counters.forEach(counter => observer.observe(counter));
+        // Counter animations
+        if (this.counters.length > 0) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animateCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            this.counters.forEach(counter => counterObserver.observe(counter));
+        }
     }
     
     animateCounter(element) {
         const target = parseFloat(element.getAttribute('data-count'));
         const isDecimal = element.getAttribute('data-decimal') === 'true';
         const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
+        const startTime = performance.now();
         
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Ease out quad
+            const easeProgress = 1 - (1 - progress) * (1 - progress);
+            const current = target * easeProgress;
+            
+            if (isDecimal) {
+                element.textContent = current.toFixed(2);
+            } else {
+                element.textContent = Math.floor(current) + '+';
             }
-            element.textContent = isDecimal ? current.toFixed(2) : Math.floor(current) + '+';
-        }, 16);
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        };
+        
+        requestAnimationFrame(updateCounter);
     }
 }
 
-// ========================================
-// 5. FORM MANAGER
-// ========================================
+// ============================================
+// FORM MANAGER
+// ============================================
 
 class FormManager {
     constructor() {
@@ -357,39 +277,25 @@ class FormManager {
     
     init() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        this.initInputEffects();
     }
     
     handleSubmit(e) {
         e.preventDefault();
         
-        // Add loading state
         const btn = this.form.querySelector('button[type="submit"]');
-        const originalText = btn.innerHTML;
+        const originalContent = btn.innerHTML;
+        
+        // Loading state
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         btn.disabled = true;
         
-        // Simulate form submission
+        // Simulate submission
         setTimeout(() => {
             this.showToast('Message sent successfully! I\'ll get back to you soon.');
             this.form.reset();
-            btn.innerHTML = originalText;
+            btn.innerHTML = originalContent;
             btn.disabled = false;
         }, 1500);
-    }
-    
-    initInputEffects() {
-        const inputs = this.form.querySelectorAll('input, textarea');
-        
-        inputs.forEach(input => {
-            input.addEventListener('focus', () => {
-                input.parentElement.classList.add('focused');
-            });
-            
-            input.addEventListener('blur', () => {
-                input.parentElement.classList.remove('focused');
-            });
-        });
     }
     
     showToast(message) {
@@ -406,106 +312,16 @@ class FormManager {
     }
 }
 
-// ========================================
-// 6. UTILITY FUNCTIONS
-// ========================================
-
-const Utils = {
-    // Debounce function for scroll events
-    debounce: (func, wait) => {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    },
-    
-    // Add ripple effect to buttons
-    addRipple: (button, e) => {
-        const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            left: ${x}px;
-            top: ${y}px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple 0.6s ease-out;
-            pointer-events: none;
-        `;
-        
-        button.style.position = 'relative';
-        button.style.overflow = 'hidden';
-        button.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-    }
-};
-
-// ========================================
-// 7. INITIALIZATION
-// ========================================
+// ============================================
+// INITIALIZATION
+// ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all managers
-    const themeManager = new ThemeManager();
-    const navManager = new NavigationManager();
-    const animationManager = new AnimationManager();
-    const formManager = new FormManager();
+    new ThemeManager();
+    new NavigationManager();
+    new AnimationManager();
+    new FormManager();
     
-    // Add ripple effect to all buttons
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', (e) => Utils.addRipple(btn, e));
-    });
-    
-    // Role cycling animation
-    const roleItems = document.querySelectorAll('.role-item');
-    let currentRole = 0;
-    
-    setInterval(() => {
-        roleItems.forEach((item, index) => {
-            item.classList.remove('active');
-            if (index === currentRole) {
-                item.classList.add('active');
-            }
-        });
-        currentRole = (currentRole + 1) % roleItems.length;
-    }, 3000);
-    
-    // Page load animation
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-    
-    // Performance: Pause animations when tab is hidden
-    document.addEventListener('visibilitychange', () => {
-        const animatedElements = document.querySelectorAll('.floating-shape, .card-glow, .float-icon');
-        animatedElements.forEach(el => {
-            el.style.animationPlayState = document.hidden ? 'paused' : 'running';
-        });
-    });
-    
-    console.log('✨ Tamim Hasan Portfolio - Loaded Successfully!');
+    console.log('✨ Tamim Hasan Portfolio - Loaded Successfully');
 });
-
-// Add ripple keyframes to document
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        to { transform: scale(2); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
