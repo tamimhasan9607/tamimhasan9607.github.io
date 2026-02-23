@@ -759,7 +759,7 @@
             transform: translateY(0);
         }
     </style>
-<base target="_blank">
+
 </head>
 <body>
     <div class="bg-pattern"></div>
@@ -1066,42 +1066,42 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item" data-animate="fade-up">
-                    <img src="1.png" alt="VR Start Screen">
+                    <img src="Main Menu Interface.png" alt="VR Start Screen">
                     <div class="gallery-overlay">
                         <span class="gallery-caption">Main Menu Interface</span>
                     </div>
                 </div>
 
                 <div class="gallery-item" data-animate="fade-up" data-delay="100">
-                    <img src="2.png" alt="Vape World Environment">
+                    <img src="Virtual Vape World.png" alt="Vape World Environment">
                     <div class="gallery-overlay">
                         <span class="gallery-caption">Virtual Vape World</span>
                     </div>
                 </div>
 
                 <div class="gallery-item" data-animate="fade-up" data-delay="200">
-                    <img src="3.png" alt="Interactive Scene">
+                    <img src="Interactive Elements.png" alt="Interactive Scene">
                     <div class="gallery-overlay">
                         <span class="gallery-caption">Interactive Elements</span>
                     </div>
                 </div>
 
                 <div class="gallery-item" data-animate="fade-up" data-delay="300">
-                    <img src="4.png" alt="Anatomy Visualization">
+                    <img src="3D Anatomy Views.png" alt="Anatomy Visualization">
                     <div class="gallery-overlay">
                         <span class="gallery-caption">3D Anatomy Views</span>
                     </div>
                 </div>
 
                 <div class="gallery-item" data-animate="fade-up" data-delay="400">
-                    <img src="5.png" alt="Tutorial Scene">
+                    <img src="Tutorial Environment.png" alt="Tutorial Scene">
                     <div class="gallery-overlay">
                         <span class="gallery-caption">Tutorial Environment</span>
                     </div>
                 </div>
 
                 <div class="gallery-item" data-animate="fade-up" data-delay="500">
-                    <img src="6.png" alt="Presentation Demo">
+                    <img src="Live Presentation.jpg" alt="Presentation Demo">
                     <div class="gallery-overlay">
                         <span class="gallery-caption">Live Presentation</span>
                     </div>
@@ -1117,37 +1117,41 @@
                     <h2 class="section-title">Watch the Experience</h2>
                 </div>
 
-                <div class="video-grid">
-                    <div class="video-card" data-animate="fade-up">
-                        <div class="video-wrapper">
-                            <iframe 
-                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" 
-                                title="Beyond the Vape - Full Demo"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3>Full Application Demo</h3>
-                            <p>Complete walkthrough of the 8-minute VR experience showing all interactive features.</p>
-                        </div>
-                    </div>
+<div class="video-grid">
+    <div class="video-card" data-animate="fade-up" style="cursor: pointer;" onclick="window.open('https://youtu.be/-jYi65Qn5Gc', '_blank')">
+        <div class="video-wrapper" style="background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="text-align: center; color: white;">
+                <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--vr-accent); margin-bottom: 1rem;"></i>
+                <p style="font-size: 1.1rem; font-weight: 600;">Watch Demo on YouTube</p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Click to open video</p>
+            </div>
+            <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: white;">
+                <i class="fab fa-youtube" style="color: #ff0000; margin-right: 5px;"></i> YouTube
+            </div>
+        </div>
+        <div class="video-info">
+            <h3>Full Application Demo</h3>
+            <p>Complete walkthrough of the 8-minute VR experience showing all interactive features.</p>
+        </div>
+    </div>
 
-                    <div class="video-card" data-animate="fade-up" data-delay="100">
-                        <div class="video-wrapper">
-                            <iframe 
-                                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" 
-                                title="Beyond the Vape - Promo Video"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3>Promotional Video</h3>
-                            <p>Short promotional video highlighting key features and educational impact.</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="video-card" data-animate="fade-up" data-delay="100" style="cursor: pointer;" onclick="window.open('https://youtu.be/_mdgW6qob3Q', '_blank')">
+        <div class="video-wrapper" style="background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="text-align: center; color: white;">
+                <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--vr-accent); margin-bottom: 1rem;"></i>
+                <p style="font-size: 1.1rem; font-weight: 600;">Watch Promo on YouTube</p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Click to open video</p>
+            </div>
+            <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: white;">
+                <i class="fab fa-youtube" style="color: #ff0000; margin-right: 5px;"></i> YouTube
+            </div>
+        </div>
+        <div class="video-info">
+            <h3>Promotional Video</h3>
+            <p>Short promotional video highlighting key features and educational impact.</p>
+        </div>
+    </div>
+</div>
             </div>
         </section>
 
