@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Tamim Hasan | Journey & Experience</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --primary: #0ea5e9;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            --gradient-text: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #10b981 100%);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .logo-mark {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 100px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 4rem 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 4rem 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 45%;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            border: 4px solid var(--bg-primary);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+            z-index: 2;
+            top: 2rem;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-location {
+            justify-content: flex-end;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-top: 1rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .timeline-item:nth-child(odd) .skills-grid {
+            justify-content: flex-end;
+        }
+
+        .skill-pill {
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .skill-pill:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Cards Section */
+        .experience-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+            margin-top: 4rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .role-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .role-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .role-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .role-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Summary Section */
+        .summary-section {
+            padding: 4rem 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
+            border: 2px solid rgba(14, 165, 233, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(14, 165, 233, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .summary-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-location,
+            .timeline-item:nth-child(odd) .skills-grid {
+                justify-content: flex-start;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    <div class="bg-gradient"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-mark">Tamim</span>
+                <span class="logo-text">Hasan</span>
+            </a>
+            <a href="index.html#about" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to About</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-badge">
+                <i class="fas fa-user-circle"></i>
+                <span>My Journey</span>
+            </div>
+            <h1 class="hero-title">The Story So Far</h1>
+            <p class="hero-subtitle">
+                From Computer Science Engineer in Bangladesh to Master's graduate in Australia, 
+                with diverse experience across technology and customer service.
+            </p>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <div class="timeline">
+                <!-- 2022 - Bachelor's -->
+                <div class="timeline-item animate-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022</span>
+                        <h3 class="timeline-title">Bachelor's Degree Completed</h3>
+                        <div class="timeline-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangladesh</span>
+                        </div>
+                        <p class="timeline-text">
+                            Completed Bachelor's degree in Computer Science and became a Computer Science Engineer. 
+                            Gained foundational knowledge in software engineering, algorithms, and system design.
+                        </p>
+                        <div class="skills-grid">
+                            <span class="skill-pill">Computer Science</span>
+                            <span class="skill-pill">Software Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internship -->
+                <div class="timeline-item animate-in delay-100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022</span>
+                        <h3 class="timeline-title">Junior Software Engineer Intern</h3>
+                        <div class="timeline-location">
+                            <i class="fas fa-building"></i>
+                            <span>Software IT Firm</span>
+                        </div>
+                        <p class="timeline-text">
+                            Gained hands-on experience as a Junior Software Engineer during internship. 
+                            Worked on real-world projects, collaborated with senior developers, and applied 
+                            academic knowledge to practical software development challenges.
+                        </p>
+                        <div class="skills-grid">
+                            <span class="skill-pill">Software Development</span>
+                            <span class="skill-pill">Team Collaboration</span>
+                            <span class="skill-pill">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2023 - Australia -->
+                <div class="timeline-item animate-in delay-200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023</span>
+                        <h3 class="timeline-title">Moved to Australia</h3>
+                        <div class="timeline-location">
+                            <i class="fas fa-plane"></i>
+                            <span>Australia</span>
+                        </div>
+                        <p class="timeline-text">
+                            Embarked on a new chapter pursuing Master's degree. Adapted to a new culture, 
+                            environment, and education system while building an international network 
+                            and perspective.
+                        </p>
+                        <div class="highlight-box">
+                            <strong>Key Achievement:</strong> Successfully transitioned to international 
+                            student life while maintaining academic excellence.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master's -->
+                <div class="timeline-item animate-in delay-300">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023-2024</span>
+                        <h3 class="timeline-title">Master's Degree with Dean's Commendation</h3>
+                        <div class="timeline-location">
+                            <i class="fas fa-university"></i>
+                            <span>Federation University Australia</span>
+                        </div>
+                        <p class="timeline-text">
+                            Completed Master's degree with commendation from the Dean. Specialized in 
+                            advanced computing and business analytics, achieving High Distinction in 
+                            major projects including VR development and predictive analytics.
+                        </p>
+                        <div class="skills-grid">
+                            <span class="skill-pill">VR Development</span>
+                            <span class="skill-pill">Data Analytics</span>
+                            <span class="skill-pill">Research</span>
+                            <span class="skill-pill">Academic Excellence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Diverse Work Experience</h2>
+                    <p class="section-subtitle">
+                        Over two years of customer service experience across multiple roles, 
+                        developing strong communication and problem-solving skills.
+                    </p>
+                </div>
+
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Junior Software Engineer</h3>
+                            <p>Hands-on software development experience at IT firm, working on production code and agile teams.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Receptionist</h3>
+                            <p>Front desk management, appointment scheduling, and professional client communication.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Building Attendant</h3>
+                            <p>Facility management, security coordination, and operational support services.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Salesperson</h3>
+                            <p>Customer relationship building, product demonstration, and sales target achievement.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Residential Advisor</h3>
+                            <p>Student support, conflict resolution, and community building in residential settings.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Wait Staff</h3>
+                            <p>High-pressure service environment, multitasking, and exceptional customer care.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Customer Service Assistant</h3>
+                            <p>Query resolution, complaint handling, and maintaining high customer satisfaction rates.</p>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="role-content">
+                            <h3>Student Senate Chair</h3>
+                            <p>Leadership, governance, and representing student body at university level.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="summary-section">
+            <div class="summary-card">
+                <p class="summary-text">
+                    With over two years of customer service experience across diverse roles, 
+                    Tamim has developed strong communication and problem-solving skills, 
+                    which he continues to apply across his work and studies. His unique blend 
+                    of technical expertise and people skills enables him to bridge the gap 
+                    between complex technology and user needs.
+                </p>
+                <a href="index.html#contact" class="cta-button">
+                    <span>Get In Touch</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Tamim Hasan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality (sync with main page)
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
