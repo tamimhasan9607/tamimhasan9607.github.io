@@ -17,7 +17,7 @@
 
     <style>
         .merge-hero {
-            padding: 8rem 0 4rem;
+            padding: 8rem 0 3rem;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
@@ -26,23 +26,251 @@
         }
 
         .merge-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem 6rem;
+            padding: 0 2rem 4rem;
         }
 
         .merge-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 3rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
+            margin-bottom: 2rem;
         }
 
         .merge-card:hover {
             box-shadow: var(--shadow-xl);
+        }
+
+        /* Help Button */
+        .help-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 6rem;
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .help-button:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Tutorial Modal */
+        .tutorial-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tutorial-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .tutorial-content {
+            background: var(--bg-card);
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .tutorial-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 24px 24px 0 0;
+        }
+
+        .tutorial-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tutorial-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tutorial-close:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .tutorial-body {
+            padding: 2rem;
+        }
+
+        .tutorial-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tutorial-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .step-visual {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .step-visual i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .quick-guide-banner {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-guide-banner:hover {
+            transform: translateY(-2px);
             border-color: var(--primary);
+            box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.1);
+        }
+
+        .quick-guide-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .quick-guide-text {
+            flex: 1;
+        }
+
+        .quick-guide-text h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-guide-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .quick-guide-arrow {
+            color: var(--primary);
+            font-size: 1.25rem;
         }
 
         .drop-zone {
@@ -170,6 +398,20 @@
             color: var(--text-muted);
         }
 
+        .file-order-badge {
+            background: var(--primary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
         .file-actions {
             display: flex;
             gap: 0.5rem;
@@ -189,14 +431,19 @@
             transition: all 0.2s;
         }
 
-        .file-btn:hover {
+        .file-btn:hover:not(:disabled) {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
         }
 
-        .file-btn.move-up:hover,
-        .file-btn.move-down:hover {
+        .file-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .file-btn.move-up:hover:not(:disabled),
+        .file-btn.move-down:hover:not(:disabled) {
             background: var(--secondary);
             border-color: var(--secondary);
         }
@@ -260,6 +507,26 @@
         .btn-secondary:hover {
             border-color: var(--primary);
             color: var(--primary);
+        }
+
+        .btn-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-text:hover {
+            background: var(--primary);
+            color: white;
         }
 
         .progress-container {
@@ -363,37 +630,46 @@
             opacity: 0.5;
         }
 
-        .features-grid {
+        .tips-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .feature-box {
-            text-align: center;
-            padding: 1.5rem;
+        .tip-card {
             background: var(--bg-secondary);
-            border-radius: 12px;
             border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
-        .feature-box-icon {
-            font-size: 2rem;
+        .tip-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--primary);
-            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            flex-shrink: 0;
         }
 
-        .feature-box-title {
-            font-weight: 600;
+        .tip-content h4 {
+            font-size: 0.95rem;
             color: var(--text-primary);
             margin-bottom: 0.25rem;
-            font-size: 0.95rem;
         }
 
-        .feature-box-desc {
+        .tip-content p {
             font-size: 0.85rem;
             color: var(--text-muted);
+            line-height: 1.5;
         }
 
         @media (max-width: 768px) {
@@ -405,7 +681,7 @@
                 padding: 2rem 1rem;
             }
 
-            .features-grid {
+            .tips-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -422,6 +698,16 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .tutorial-step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .help-button {
+                right: 2rem;
+                bottom: 5rem;
+            }
         }
 
         .spinner {
@@ -437,8 +723,88 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Dropdown Menu Styles */
+        .nav-item-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.5rem;
+            min-width: 200px;
+            box-shadow: var(--shadow-xl);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background: var(--bg-secondary);
+            color: var(--primary);
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-label {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                margin-top: 0;
+                padding-left: 1rem;
+            }
+        }
     </style>
-<base target="_blank">
+
 </head>
 <body>
     <div class="bg-pattern"></div>
@@ -458,6 +824,23 @@
                 <li><a href="index.html#projects" class="nav-link">Projects</a></li>
                 <li><a href="index.html#skills" class="nav-link">Skills</a></li>
                 <li><a href="index.html#achievements" class="nav-link">Achievements</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#" class="nav-link" onclick="return false;">
+                        Tools <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 0.25rem;"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-label">Free Utilities</div>
+                        <a href="merge-pdf.html" class="dropdown-item active">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>PDF Merger</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="index.html#contact" class="dropdown-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Request a Tool</span>
+                        </a>
+                    </div>
+                </li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
 
@@ -488,6 +871,22 @@
             </p>
         </section>
 
+        <!-- Quick Guide Banner -->
+        <section class="merge-container" style="padding-bottom: 1rem;">
+            <div class="quick-guide-banner" onclick="openTutorial()">
+                <div class="quick-guide-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="quick-guide-text">
+                    <h3>First time here?</h3>
+                    <p>Click here to see a step-by-step guide on how to use this tool</p>
+                </div>
+                <div class="quick-guide-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </section>
+
         <!-- Merge Tool -->
         <section class="merge-container">
             <div class="merge-card">
@@ -496,7 +895,7 @@
                         <i class="fas fa-cloud-upload-alt"></i>
                     </div>
                     <div class="drop-zone-text">Drop PDF files here</div>
-                    <div class="drop-zone-hint">or click to browse (2 to 10+ files)</div>
+                    <div class="drop-zone-hint">or click to browse • Supports 2 to 10+ files</div>
                     <input type="file" id="fileInput" class="file-input" accept=".pdf" multiple>
                 </div>
 
@@ -535,6 +934,10 @@
                         <i class="fas fa-trash-alt"></i>
                         <span>Clear All</span>
                     </button>
+                    <button class="btn-text" onclick="openTutorial()">
+                        <i class="fas fa-question-circle"></i>
+                        <span>How to use?</span>
+                    </button>
                     <button class="btn-merge" id="mergeBtn">
                         <i class="fas fa-magic"></i>
                         <span>Merge PDFs</span>
@@ -542,32 +945,129 @@
                 </div>
             </div>
 
-            <!-- Features -->
-            <div class="features-grid">
-                <div class="feature-box">
-                    <div class="feature-box-icon">
+            <!-- Tips Section -->
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-sort"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h4>Arrange Order</h4>
+                        <p>Use arrow buttons to reorder files before merging. Top file becomes first page.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="feature-box-title">100% Private</div>
-                    <div class="feature-box-desc">All processing happens in your browser. No files sent to servers.</div>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-box-icon">
-                        <i class="fas fa-bolt"></i>
+                    <div class="tip-content">
+                        <h4>Privacy First</h4>
+                        <p>All processing happens in your browser. Files never leave your computer.</p>
                     </div>
-                    <div class="feature-box-title">Lightning Fast</div>
-                    <div class="feature-box-desc">Client-side merging means instant results, no waiting.</div>
                 </div>
-                <div class="feature-box">
-                    <div class="feature-box-icon">
+                <div class="tip-card">
+                    <div class="tip-icon">
                         <i class="fas fa-infinity"></i>
                     </div>
-                    <div class="feature-box-title">No Limits</div>
-                    <div class="feature-box-desc">Merge 2 files or 20. No restrictions on file size or count.</div>
+                    <div class="tip-content">
+                        <h4>No Limits</h4>
+                        <p>Merge 2 files or 20. No restrictions on file size or number of pages.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h4>Lightning Fast</h4>
+                        <p>Client-side merging means instant results, no uploading or waiting.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Tutorial Modal -->
+    <div class="tutorial-modal" id="tutorialModal">
+        <div class="tutorial-content">
+            <div class="tutorial-header">
+                <h2 class="tutorial-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    How to Use PDF Merger
+                </h2>
+                <button class="tutorial-close" onclick="closeTutorial()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tutorial-body">
+                <div class="tutorial-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-upload"></i> Upload Your PDFs</h3>
+                        <p>Drag and drop your PDF files into the drop zone, or click the area to browse your computer. You can select multiple files at once by holding Ctrl (or Cmd on Mac) while clicking.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span>Drop files here or click to browse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-sort-amount-down"></i> Arrange Order (Important!)</h3>
+                        <p>Files are merged from top to bottom. Use the <strong>up</strong> and <strong>down</strong> arrow buttons to arrange the order. The file at the top will be the first pages of your merged PDF.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-arrows-alt-v"></i>
+                            <span>File at top = First pages • File at bottom = Last pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-check-circle"></i> Review Your List</h3>
+                        <p>Check that all files are in the correct order. You can remove any file by clicking the <strong>X button</strong>. File size is shown below each filename to help you identify them.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-list-check"></i>
+                            <span>Review order • Check file sizes • Remove if needed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-magic"></i> Merge & Download</h3>
+                        <p>Click the <strong>"Merge PDFs"</strong> button. The tool will process your files instantly in the browser. Once complete, click <strong>"Download Merged PDF"</strong> to save your combined file.</p>
+                        <div class="step-visual">
+                            <i class="fas fa-download"></i>
+                            <span>Your merged PDF will download automatically</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
+                    <h4 style="color: #f59e0b; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-lightbulb"></i>
+                        Pro Tips
+                    </h4>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 1.8; margin: 0;">
+                        <li>Files are numbered in the order they will appear in the final PDF</li>
+                        <li>You can merge up to 50+ PDFs at once - there's no strict limit</li>
+                        <li>If the download doesn't start automatically, check your browser's download bar</li>
+                        <li>The merged file will be named "merged-document.pdf" by default</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Floating Button -->
+    <button class="help-button" onclick="openTutorial()" title="How to use">
+        <i class="fas fa-question"></i>
+    </button>
 
     <footer class="footer">
         <div class="container">
@@ -614,6 +1114,32 @@
         const resultContainer = document.getElementById('resultContainer');
         const downloadBtn = document.getElementById('downloadBtn');
         const resultInfo = document.getElementById('resultInfo');
+        const tutorialModal = document.getElementById('tutorialModal');
+
+        // Tutorial functions
+        function openTutorial() {
+            tutorialModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTutorial() {
+            tutorialModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on outside click
+        tutorialModal.addEventListener('click', (e) => {
+            if (e.target === tutorialModal) {
+                closeTutorial();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && tutorialModal.classList.contains('active')) {
+                closeTutorial();
+            }
+        });
 
         // Click to browse
         dropZone.addEventListener('click', () => fileInput.click());
@@ -664,6 +1190,7 @@
 
             filesList.innerHTML = pdfFiles.map((file, index) => `
                 <div class="file-item" data-index="${index}">
+                    <div class="file-order-badge">${index + 1}</div>
                     <div class="file-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
@@ -672,13 +1199,13 @@
                         <span class="file-size">${formatFileSize(file.size)}</span>
                     </div>
                     <div class="file-actions">
-                        <button class="file-btn move-up" onclick="moveFile(${index}, -1)" ${index === 0 ? 'disabled' : ''} title="Move up">
+                        <button class="file-btn move-up" onclick="moveFile(${index}, -1)" ${index === 0 ? 'disabled' : ''} title="Move up (earlier in PDF)">
                             <i class="fas fa-arrow-up"></i>
                         </button>
-                        <button class="file-btn move-down" onclick="moveFile(${index}, 1)" ${index === pdfFiles.length - 1 ? 'disabled' : ''} title="Move down">
+                        <button class="file-btn move-down" onclick="moveFile(${index}, 1)" ${index === pdfFiles.length - 1 ? 'disabled' : ''} title="Move down (later in PDF)">
                             <i class="fas fa-arrow-down"></i>
                         </button>
-                        <button class="file-btn remove" onclick="removeFile(${index})" title="Remove">
+                        <button class="file-btn remove" onclick="removeFile(${index})" title="Remove file">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
