@@ -204,27 +204,27 @@ class Animator {
     }
 
     animateCounter(element) {
-        const target = parseFloat(element.getAttribute('data-count'));
-        const duration = 2000;
-        const startTime = performance.now();
+    const target = parseFloat(element.getAttribute('data-count'));
+    const duration = 2000;
+    const startTime = performance.now();
 
-        const update = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const ease = 1 - (1 - progress) * (1 - progress);
-            const current = target * ease;
+    const update = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - (1 - progress) * (1 - progress);
+        const current = target * ease;
 
-            element.textContent = Math.floor(current);
+        element.textContent = Math.floor(current) + '+';
 
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            } else {
-                element.textContent = target;
-            }
-        };
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target + '+';
+        }
+    };
 
-        requestAnimationFrame(update);
-    }
+    requestAnimationFrame(update);
+}
 }
 
 // Form Handler
