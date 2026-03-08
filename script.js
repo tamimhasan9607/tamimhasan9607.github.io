@@ -59,8 +59,24 @@ class Navigation {
             });
         });
 
-        // Close menu when clicking outside
+        // Mobile dropdown toggle — tap "Tools" to open/close on touch devices
+        const dropdownTrigger = document.querySelector('.nav-link-dropdown');
+        const dropdownParent = document.querySelector('.nav-item-dropdown');
+        if (dropdownTrigger && dropdownParent) {
+            dropdownTrigger.addEventListener('click', (e) => {
+                // Only handle as click-toggle on mobile (hover handles desktop)
+                if (window.innerWidth <= 768) return; // mobile shows it always (CSS static)
+                e.preventDefault();
+                dropdownParent.classList.toggle('open');
+            });
+        }
+
+        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
+            if (dropdownParent && !dropdownParent.contains(e.target)) {
+                dropdownParent.classList.remove('open');
+            }
+            // Close nav menu when clicking outside
             if (this.navMenu && this.navMenu.classList.contains('active')) {
                 if (!this.navMenu.contains(e.target) && !this.hamburger.contains(e.target)) {
                     this.closeMenu();
@@ -266,7 +282,7 @@ class FormHandler {
                 throw new Error('Failed to send');
             }
         } catch (error) {
-            alert('Oops! There was a problem sending your message. Please try again.');
+            this.showToast('error');
             console.error('Error:', error);
         } finally {
             btn.innerHTML = original;
@@ -274,12 +290,27 @@ class FormHandler {
         }
     }
 
-    showToast() {
+    showToast(type = 'success') {
         if (this.toast) {
+            const icon = this.toast.querySelector('i');
+            const msg = this.toast.querySelector('span');
+
+            if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle';
+                msg.textContent = 'Oops! Something went wrong. Please try again.';
+                this.toast.classList.add('error');
+                this.toast.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            } else {
+                icon.className = 'fas fa-check-circle';
+                msg.textContent = 'Message sent successfully!';
+                this.toast.classList.remove('error');
+                this.toast.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            }
+
             this.toast.classList.add('show');
             setTimeout(() => {
-                this.toast.classList.remove('show');
-            }, 3000);
+                this.toast.classList.remove('show', 'error');
+            }, 3500);
         }
     }
 }
@@ -505,12 +536,26 @@ class GallerySlider {
             });
         }
 
-        // Keyboard navigation
+        // Keyboard navigation — only when gallery is visible AND no input is focused
         document.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+
+            // Don't intercept when user is typing in a form field
+            const active = document.activeElement;
+            if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) return;
+
+            // Only activate when the gallery section is visible on screen
+            const gallerySection = document.getElementById('gallery');
+            if (gallerySection) {
+                const rect = gallerySection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (!isVisible) return;
+            }
+
             if (e.key === 'ArrowLeft') {
                 this.prev();
                 this.resetAutoPlay();
-            } else if (e.key === 'ArrowRight') {
+            } else {
                 this.next();
                 this.resetAutoPlay();
             }

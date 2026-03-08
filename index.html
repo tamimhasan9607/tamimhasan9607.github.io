@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamim Hasan | Tech Innovator & ScrumMaster</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <!-- SEO -->
+    <meta name="description" content="Tamim Hasan — certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact. Explore projects, skills, and achievements.">
+    <meta name="keywords" content="Tamim Hasan, ScrumMaster, Tech Innovator, Business Analyst, Portfolio, VR Developer, Federation University">
+    <meta name="author" content="Tamim Hasan">
+    <link rel="canonical" href="https://tamim.live/">
+
+    <!-- Open Graph (social media previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tamim.live/">
+    <meta property="og:title" content="Tamim Hasan | Tech Innovator & ScrumMaster">
+    <meta property="og:description" content="Certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact.">
+    <meta property="og:image" content="https://tamim.live/assets/tamim.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tamim Hasan | Tech Innovator & ScrumMaster">
+    <meta name="twitter:description" content="Certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact.">
+    <meta name="twitter:image" content="https://tamim.live/assets/tamim.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
-
 
 </head>
 <body>
@@ -32,19 +53,19 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#achievements" class="nav-link">Achievements</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li class="nav-item-dropdown" style="position: relative;">
-                    <a href="#" class="nav-link" onclick="return false;" style="display: flex; align-items: center; gap: 0.25rem;">
-                        Tools <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                <li class="nav-item-dropdown">
+                    <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools <i class="fas fa-chevron-down dropdown-chevron"></i>
                     </a>
-                    <div class="dropdown-menu" style="position: absolute; top: 100%; left: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 0.5rem; min-width: 200px; box-shadow: var(--shadow-xl); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s; z-index: 1001; margin-top: 0.5rem;">
-                        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Free Utilities</div>
-                        <a href="merge-pdf.html" class="dropdown-item" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 8px; transition: all 0.2s; font-size: 0.9rem;">
-                            <i class="fas fa-file-pdf" style="width: 20px; text-align: center;"></i>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-label">Free Utilities</div>
+                        <a href="merge-pdf.html" class="dropdown-item">
+                            <i class="fas fa-file-pdf dropdown-item-icon"></i>
                             <span>PDF Merger</span>
                         </a>
-                        <div style="height: 1px; background: var(--border-color); margin: 0.5rem 0;"></div>
-                        <a href="#contact" class="dropdown-item" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: 8px; transition: all 0.2s; font-size: 0.9rem;">
-                            <i class="fas fa-envelope" style="width: 20px; text-align: center;"></i>
+                        <div class="dropdown-divider"></div>
+                        <a href="#contact" class="dropdown-item">
+                            <i class="fas fa-envelope dropdown-item-icon"></i>
                             <span>Request a Tool</span>
                         </a>
                     </div>
@@ -52,30 +73,6 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
-            <style>
-                .nav-item-dropdown:hover .dropdown-menu {
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                    transform: translateY(0) !important;
-                }
-                .dropdown-item:hover {
-                    background: var(--bg-secondary) !important;
-                    color: var(--primary) !important;
-                }
-                @media (max-width: 768px) {
-                    .dropdown-menu {
-                        position: static !important;
-                        opacity: 1 !important;
-                        visibility: visible !important;
-                        transform: none !important;
-                        box-shadow: none !important;
-                        border: none !important;
-                        background: transparent !important;
-                        margin-top: 0 !important;
-                        padding-left: 1rem !important;
-                    }
-                }
-            </style>
 
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -181,11 +178,11 @@
             <div class="about-visual-story" data-animate="fade-right">
                 <div class="image-collage">
                     <div class="image-main">
-                        <img src="assets/tamim3.png" alt="Tamim Hasan Portrait" class="img-main">
+                        <img src="assets/tamim3.png" alt="Tamim Hasan Portrait" class="img-main" loading="lazy">
                         <div class="image-accent-shape"></div>
                     </div>
                     <div class="image-secondary">
-                        <img src="assets/tamim.png" alt="Tamim Hasan Professional" class="img-secondary">
+                        <img src="assets/tamim.png" alt="Tamim Hasan Professional" class="img-secondary" loading="lazy">
                     </div>
                     <div class="experience-float">
                         <span class="exp-number">3+</span>
@@ -718,126 +715,126 @@
                     <!-- Slide 1 -->
                     <div class="gallery-slide active">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/1.png" alt="Gallery Image 1" class="gallery-img">
+                            <img src="assets/1.png" alt="Tamim Hasan – gallery photo 1" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 2 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/2.png" alt="Gallery Image 2" class="gallery-img">
+                            <img src="assets/2.png" alt="Tamim Hasan – gallery photo 2" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 3 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/3.png" alt="Gallery Image 3" class="gallery-img">
+                            <img src="assets/3.png" alt="Tamim Hasan – gallery photo 3" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 4 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/4.png" alt="Gallery Image 4" class="gallery-img">
+                            <img src="assets/4.png" alt="Tamim Hasan – gallery photo 4" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 5 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/5.png" alt="Gallery Image 5" class="gallery-img">
+                            <img src="assets/5.png" alt="Tamim Hasan – gallery photo 5" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 6 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/6.png" alt="Gallery Image 6" class="gallery-img">
+                            <img src="assets/6.png" alt="Tamim Hasan – gallery photo 6" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 7 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/7.png" alt="Gallery Image 7" class="gallery-img">
+                            <img src="assets/7.png" alt="Tamim Hasan – gallery photo 7" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 8 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/8.png" alt="Gallery Image 8" class="gallery-img">
+                            <img src="assets/8.png" alt="Tamim Hasan – gallery photo 8" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 9 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/9.png" alt="Gallery Image 9" class="gallery-img">
+                            <img src="assets/9.png" alt="Tamim Hasan – gallery photo 9" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 10 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/10.png" alt="Gallery Image 10" class="gallery-img">
+                            <img src="assets/10.png" alt="Tamim Hasan – gallery photo 10" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 11 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/11.png" alt="Gallery Image 11" class="gallery-img">
+                            <img src="assets/11.png" alt="Tamim Hasan – gallery photo 11" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 12 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/12.png" alt="Gallery Image 12" class="gallery-img">
+                            <img src="assets/12.png" alt="Tamim Hasan – gallery photo 12" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 13 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/13.png" alt="Gallery Image 13" class="gallery-img">
+                            <img src="assets/13.png" alt="Tamim Hasan – gallery photo 13" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 14 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/14.png" alt="Gallery Image 14" class="gallery-img">
+                            <img src="assets/14.png" alt="Tamim Hasan – gallery photo 14" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 15 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/15.png" alt="Gallery Image 15" class="gallery-img">
+                            <img src="assets/15.png" alt="Tamim Hasan – gallery photo 15" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 16 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/16.png" alt="Gallery Image 16" class="gallery-img">
+                            <img src="assets/16.png" alt="Tamim Hasan – gallery photo 16" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 17 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/17.png" alt="Gallery Image 17" class="gallery-img">
+                            <img src="assets/17.png" alt="Tamim Hasan – gallery photo 17" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 18 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/18.png" alt="Gallery Image 18" class="gallery-img">
+                            <img src="assets/18.png" alt="Tamim Hasan – gallery photo 18" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
@@ -862,24 +859,24 @@
 
             <!-- Thumbnail Navigation -->
             <div class="gallery-thumbnails" id="galleryThumbs">
-                <div class="thumb active" data-index="0"><img src="assets/1.png" alt="Thumb 1"></div>
-                <div class="thumb" data-index="1"><img src="assets/2.png" alt="Thumb 2"></div>
-                <div class="thumb" data-index="2"><img src="assets/3.png" alt="Thumb 3"></div>
-                <div class="thumb" data-index="3"><img src="assets/4.png" alt="Thumb 4"></div>
-                <div class="thumb" data-index="4"><img src="assets/5.png" alt="Thumb 5"></div>
-                <div class="thumb" data-index="5"><img src="assets/6.png" alt="Thumb 6"></div>
-                <div class="thumb" data-index="6"><img src="assets/7.png" alt="Thumb 7"></div>
-                <div class="thumb" data-index="7"><img src="assets/8.png" alt="Thumb 8"></div>
-                <div class="thumb" data-index="8"><img src="assets/9.png" alt="Thumb 9"></div>
-                <div class="thumb" data-index="9"><img src="assets/10.png" alt="Thumb 10"></div>
-                <div class="thumb" data-index="10"><img src="assets/11.png" alt="Thumb 11"></div>
-                <div class="thumb" data-index="11"><img src="assets/12.png" alt="Thumb 12"></div>
-                <div class="thumb" data-index="12"><img src="assets/13.png" alt="Thumb 13"></div>
-                <div class="thumb" data-index="13"><img src="assets/14.png" alt="Thumb 14"></div>
-                <div class="thumb" data-index="14"><img src="assets/15.png" alt="Thumb 15"></div>
-                <div class="thumb" data-index="15"><img src="assets/16.png" alt="Thumb 16"></div>
-                <div class="thumb" data-index="16"><img src="assets/17.png" alt="Thumb 17"></div>
-                <div class="thumb" data-index="17"><img src="assets/18.png" alt="Thumb 18"></div>
+                <div class="thumb active" data-index="0"><img src="assets/1.png" alt="Gallery thumbnail 1" loading="lazy"></div>
+                <div class="thumb" data-index="1"><img src="assets/2.png" alt="Gallery thumbnail 2" loading="lazy"></div>
+                <div class="thumb" data-index="2"><img src="assets/3.png" alt="Gallery thumbnail 3" loading="lazy"></div>
+                <div class="thumb" data-index="3"><img src="assets/4.png" alt="Gallery thumbnail 4" loading="lazy"></div>
+                <div class="thumb" data-index="4"><img src="assets/5.png" alt="Gallery thumbnail 5" loading="lazy"></div>
+                <div class="thumb" data-index="5"><img src="assets/6.png" alt="Gallery thumbnail 6" loading="lazy"></div>
+                <div class="thumb" data-index="6"><img src="assets/7.png" alt="Gallery thumbnail 7" loading="lazy"></div>
+                <div class="thumb" data-index="7"><img src="assets/8.png" alt="Gallery thumbnail 8" loading="lazy"></div>
+                <div class="thumb" data-index="8"><img src="assets/9.png" alt="Gallery thumbnail 9" loading="lazy"></div>
+                <div class="thumb" data-index="9"><img src="assets/10.png" alt="Gallery thumbnail 10" loading="lazy"></div>
+                <div class="thumb" data-index="10"><img src="assets/11.png" alt="Gallery thumbnail 11" loading="lazy"></div>
+                <div class="thumb" data-index="11"><img src="assets/12.png" alt="Gallery thumbnail 12" loading="lazy"></div>
+                <div class="thumb" data-index="12"><img src="assets/13.png" alt="Gallery thumbnail 13" loading="lazy"></div>
+                <div class="thumb" data-index="13"><img src="assets/14.png" alt="Gallery thumbnail 14" loading="lazy"></div>
+                <div class="thumb" data-index="14"><img src="assets/15.png" alt="Gallery thumbnail 15" loading="lazy"></div>
+                <div class="thumb" data-index="15"><img src="assets/16.png" alt="Gallery thumbnail 16" loading="lazy"></div>
+                <div class="thumb" data-index="16"><img src="assets/17.png" alt="Gallery thumbnail 17" loading="lazy"></div>
+                <div class="thumb" data-index="17"><img src="assets/18.png" alt="Gallery thumbnail 18" loading="lazy"></div>
             </div>
         </div>
     </div>
@@ -954,7 +951,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Tamim Hasan. All rights reserved.</p>
+            <p>&copy; 2026 Tamim Hasan. All rights reserved.</p>
             <p style="font-family: monospace; opacity: 0.7;">tamim.live</p>
         </div>
     </div>
