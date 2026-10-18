@@ -454,194 +454,195 @@ class ProjectCarousel {
     }
 }
 
-// Gallery Slider
+// Gallery Slider (Apple TV-style)
+// A looping track: the current photo sits centred with its neighbours peeking
+// in at both edges. Two clones of the last and first slides pad each end, so
+// stepping past either end animates into a clone and then jumps silently back
+// to the real slide. Autoplay pauses while the gallery is off screen, while the
+// tab is hidden, and for reduced-motion users until they press play.
 class GallerySlider {
     constructor() {
-        this.slides = document.querySelectorAll('.gallery-slide');
-        this.thumbs = document.querySelectorAll('.gallery-thumbnails .thumb');
-        this.progressBar = document.getElementById('progressBar');
+        this.root = document.getElementById('tvGallery');
+        if (!this.root) return;
+
+        this.viewport = this.root.querySelector('.tv-viewport');
+        this.track = document.getElementById('tvTrack');
+        this.slides = [...this.track.querySelectorAll('.tv-slide')];
+        this.count = this.slides.length;
+        if (this.count === 0) return;
+
         this.prevBtn = document.getElementById('galleryPrev');
         this.nextBtn = document.getElementById('galleryNext');
         this.dotsContainer = document.getElementById('galleryDots');
+        this.playBtn = document.getElementById('galleryPlay');
 
-        if (this.slides.length === 0) return;
+        this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        this.duration = 5000;
+        this.pad = Math.min(2, this.count);
+        this.index = 0;
+        this.playing = !this.reducedMotion;
+        this.onScreen = false;
+        this.timer = null;
 
-        this.currentIndex = 0;
-        this.totalSlides = this.slides.length;
-        this.autoPlayDuration = 5000;
-        this.progressInterval = null;
-        this.autoPlayTimeout = null;
-        this.isPaused = false;
-
-        this.init();
+        this.root.style.setProperty('--tv-dur', this.duration + 'ms');
+        this.addClones();
+        this.generateDots();
+        this.addEventListeners();
+        this.place(false);
+        this.update();
     }
 
-    init() {
-        this.generateDots();
-        this.dots = this.dotsContainer.querySelectorAll('.dot');
-        this.addEventListeners();
-        this.startAutoPlay();
-
-        // Pause on hover
-        const slider = document.querySelector('.gallery-slider');
-        if (slider) {
-            slider.addEventListener('mouseenter', () => this.pause());
-            slider.addEventListener('mouseleave', () => this.resume());
-        }
+    addClones() {
+        const clone = (slide) => {
+            const c = slide.cloneNode(true);
+            c.classList.add('is-clone');
+            c.setAttribute('aria-hidden', 'true');
+            c.querySelectorAll('img').forEach(img => { img.alt = ''; });
+            return c;
+        };
+        this.track.prepend(...this.slides.slice(-this.pad).map(clone));
+        this.track.append(...this.slides.slice(0, this.pad).map(clone));
+        this.all = [...this.track.children];
     }
 
     generateDots() {
         if (!this.dotsContainer) return;
         this.dotsContainer.innerHTML = '';
-        for (let i = 0; i < this.totalSlides; i++) {
+        for (let i = 0; i < this.count; i++) {
             const dot = document.createElement('button');
-            dot.classList.add('dot');
-            if (i === 0) dot.classList.add('active');
-            dot.setAttribute('data-index', i);
-            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.className = 'tv-dot';
+            dot.setAttribute('aria-label', `Show photo ${i + 1} of ${this.count}`);
+            dot.addEventListener('click', () => this.goTo(i));
             this.dotsContainer.appendChild(dot);
         }
+        this.dots = [...this.dotsContainer.children];
     }
 
     addEventListeners() {
-        if (this.prevBtn) {
-            this.prevBtn.addEventListener('click', () => {
-                this.prev();
-                this.resetAutoPlay();
-            });
-        }
+        this.prevBtn?.addEventListener('click', () => this.goTo(this.index - 1));
+        this.nextBtn?.addEventListener('click', () => this.goTo(this.index + 1));
+        this.playBtn?.addEventListener('click', () => this.setPlaying(!this.playing));
 
-        if (this.nextBtn) {
-            this.nextBtn.addEventListener('click', () => {
-                this.next();
-                this.resetAutoPlay();
+        // a click on a peeking neighbour brings it to the centre
+        this.all.forEach((slide, pos) => {
+            slide.addEventListener('click', () => {
+                if (this.dragged) return;
+                const target = pos - this.pad;
+                if (target !== this.index) this.goTo(target);
             });
-        }
+        });
 
-        if (this.dotsContainer) {
-            this.dotsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('dot')) {
-                    const index = parseInt(e.target.getAttribute('data-index'));
-                    this.goToSlide(index);
-                    this.resetAutoPlay();
-                }
-            });
-        }
+        // after animating into a clone, jump to the real slide it copies
+        this.track.addEventListener('transitionend', (e) => {
+            if (e.target === this.track && this.position !== this.index + this.pad) this.place(false);
+        });
 
-        if (this.thumbs.length > 0) {
-            this.thumbs.forEach((thumb, index) => {
-                thumb.addEventListener('click', () => {
-                    this.goToSlide(index);
-                    this.resetAutoPlay();
-                });
-            });
-        }
+        // swipe on touch, drag with a mouse
+        let startX = null;
+        this.track.addEventListener('pointerdown', (e) => {
+            startX = e.clientX;
+            this.dragged = false;
+        });
+        window.addEventListener('pointerup', (e) => {
+            if (startX === null) return;
+            const dx = e.clientX - startX;
+            startX = null;
+            if (Math.abs(dx) > 50) {
+                this.dragged = true;
+                this.goTo(this.index + (dx < 0 ? 1 : -1));
+                setTimeout(() => { this.dragged = false; }, 0);
+            }
+        });
 
         // Keyboard navigation — only when gallery is visible AND no input is focused
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-
-            // Don't intercept when user is typing in a form field
             const active = document.activeElement;
             if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) return;
-
-            // Only activate when the gallery section is visible on screen
-            const gallerySection = document.getElementById('gallery');
-            if (gallerySection) {
-                const rect = gallerySection.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                if (!isVisible) return;
-            }
-
-            if (e.key === 'ArrowLeft') {
-                this.prev();
-                this.resetAutoPlay();
-            } else {
-                this.next();
-                this.resetAutoPlay();
-            }
+            if (!this.onScreen) return;
+            this.goTo(this.index + (e.key === 'ArrowRight' ? 1 : -1));
         });
+
+        window.addEventListener('resize', () => this.place(false));
+        document.addEventListener('visibilitychange', () => this.schedule());
+
+        new IntersectionObserver(([entry]) => {
+            this.onScreen = entry.isIntersecting;
+            this.schedule();
+        }, { threshold: 0.35 }).observe(this.root);
     }
 
-    goToSlide(index) {
-        if (index === this.currentIndex) return;
+    // target may run one past either end (-1 or count); the clones cover it
+    goTo(target) {
+        // if a jump back from a clone never ran (its transition was cut
+        // short), make it now so this move starts from the real slide
+        if (this.position !== this.index + this.pad) this.place();
+        const animate = !this.reducedMotion;
+        this.index = ((target % this.count) + this.count) % this.count;
+        this.position = (animate ? target : this.index) + this.pad;
+        this.translate(animate);
+        this.update();
+    }
 
-        this.slides[this.currentIndex].classList.remove('active');
-        if (this.dots && this.dots[this.currentIndex]) {
-            this.dots[this.currentIndex].classList.remove('active');
+    // snap the track to the real current slide without animating
+    place() {
+        this.position = this.index + this.pad;
+        this.translate(false);
+    }
+
+    translate(animate) {
+        const slideWidth = this.all[0].getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(this.track).columnGap) || 0;
+        const offset = (this.viewport.clientWidth - slideWidth) / 2 - this.position * (slideWidth + gap);
+        if (!animate) this.track.style.transition = 'none';
+        this.track.style.transform = `translate3d(${offset}px, 0, 0)`;
+        if (!animate) {
+            void this.track.offsetWidth;
+            this.track.style.transition = '';
         }
-        if (this.thumbs && this.thumbs[this.currentIndex]) {
-            this.thumbs[this.currentIndex].classList.remove('active');
+    }
+
+    update() {
+        this.all.forEach((slide, pos) => {
+            slide.classList.toggle('is-active', pos === this.position);
+        });
+        this.slides.forEach((slide, i) => {
+            slide.setAttribute('aria-label', `${i + 1} of ${this.count}`);
+        });
+        this.dots?.forEach((dot, i) => {
+            const on = i === this.index;
+            dot.classList.toggle('is-active', on);
+            if (on) dot.setAttribute('aria-current', 'true');
+            else dot.removeAttribute('aria-current');
+        });
+        this.restartFill();
+        this.schedule();
+    }
+
+    // restart the active dot's fill so it tracks the new interval
+    restartFill() {
+        this.dots?.forEach(dot => dot.classList.remove('is-filling'));
+        const dot = this.dots?.[this.index];
+        if (!dot) return;
+        void dot.offsetWidth;
+        dot.classList.add('is-filling');
+    }
+
+    setPlaying(on) {
+        this.playing = on;
+        if (this.playBtn) {
+            this.playBtn.setAttribute('aria-label', on ? 'Pause slideshow' : 'Play slideshow');
+            this.playBtn.innerHTML = `<i class="fas fa-${on ? 'pause' : 'play'}"></i>`;
         }
-
-        this.currentIndex = index;
-
-        this.slides[this.currentIndex].classList.add('active');
-        if (this.dots && this.dots[this.currentIndex]) {
-            this.dots[this.currentIndex].classList.add('active');
-        }
-        if (this.thumbs && this.thumbs[this.currentIndex]) {
-            this.thumbs[this.currentIndex].classList.add('active');
-        }
-
-        this.resetProgress();
+        this.restartFill();
+        this.schedule();
     }
 
-    next() {
-        const newIndex = (this.currentIndex + 1) % this.totalSlides;
-        this.goToSlide(newIndex);
-    }
-
-    prev() {
-        const newIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
-        this.goToSlide(newIndex);
-    }
-
-    startAutoPlay() {
-        this.resetProgress();
-        this.autoPlayTimeout = setTimeout(() => {
-            this.next();
-            this.startAutoPlay();
-        }, this.autoPlayDuration);
-    }
-
-    pause() {
-        this.isPaused = true;
-        clearTimeout(this.autoPlayTimeout);
-        clearInterval(this.progressInterval);
-    }
-
-    resume() {
-        if (!this.isPaused) return;
-        this.isPaused = false;
-        this.startAutoPlay();
-    }
-
-    resetAutoPlay() {
-        clearTimeout(this.autoPlayTimeout);
-        clearInterval(this.progressInterval);
-        this.startAutoPlay();
-    }
-
-    resetProgress() {
-        clearInterval(this.progressInterval);
-        if (this.progressBar) {
-            this.progressBar.style.width = '0%';
-        }
-
-        let progress = 0;
-        const increment = 100 / (this.autoPlayDuration / 16);
-
-        this.progressInterval = setInterval(() => {
-            progress += increment;
-            if (this.progressBar) {
-                this.progressBar.style.width = Math.min(progress, 100) + '%';
-            }
-
-            if (progress >= 100) {
-                clearInterval(this.progressInterval);
-            }
-        }, 16);
+    schedule() {
+        clearTimeout(this.timer);
+        const running = this.playing && this.onScreen && !document.hidden;
+        this.root.classList.toggle('is-playing', running);
+        if (running) this.timer = setTimeout(() => this.goTo(this.index + 1), this.duration);
     }
 }
 

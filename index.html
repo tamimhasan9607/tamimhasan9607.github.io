@@ -615,178 +615,80 @@
             <span class="section-tag">Gallery</span>
             <h2 class="section-title">Moments & Memories</h2>
         </div>
+    </div>
 
-        <div class="gallery-showcase" data-animate="fade-up" data-delay="200">
-            <!-- Main Slider -->
-            <div class="gallery-slider">
-                <div class="gallery-track" id="galleryTrack">
-
-                    <!-- Slide 1 -->
-                    <div class="gallery-slide active">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/1.png" alt="Tamim Hasan gallery photo 1" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/2.png" alt="Tamim Hasan gallery photo 2" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/3.png" alt="Tamim Hasan gallery photo 3" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/4.png" alt="Tamim Hasan gallery photo 4" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 5 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/5.png" alt="Tamim Hasan gallery photo 5" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 6 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/6.png" alt="Tamim Hasan gallery photo 6" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 7 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/7.png" alt="Tamim Hasan gallery photo 7" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 8 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/8.png" alt="Tamim Hasan gallery photo 8" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 9 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/9.png" alt="Tamim Hasan gallery photo 9" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 10 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/10.png" alt="Tamim Hasan gallery photo 10" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 11 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/11.png" alt="Tamim Hasan gallery photo 11" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 12 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/12.png" alt="Tamim Hasan gallery photo 12" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 13 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/13.png" alt="Tamim Hasan gallery photo 13" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 14 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/14.png" alt="Tamim Hasan gallery photo 14" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 15 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/15.png" alt="Tamim Hasan gallery photo 15" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 16 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/16.png" alt="Tamim Hasan gallery photo 16" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 17 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/17.png" alt="Tamim Hasan gallery photo 17" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                    <!-- Slide 18 -->
-                    <div class="gallery-slide">
-                        <div class="slide-image-wrapper full">
-                            <img src="assets/18.png" alt="Tamim Hasan gallery photo 18" class="gallery-img" loading="lazy">
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="gallery-progress">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
-
-                <!-- Navigation Arrows -->
-                <button class="gallery-nav prev" id="galleryPrev" aria-label="Previous image">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="gallery-nav next" id="galleryNext" aria-label="Next image">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-
-                <!-- Dot Indicators -->
-                <div class="gallery-dots bottom" id="galleryDots"></div>
+    <div class="tv-gallery" id="tvGallery" role="region" aria-roledescription="carousel" aria-label="Photo gallery" data-animate="fade-up" data-delay="200">
+        <div class="tv-viewport">
+            <div class="tv-track" id="tvTrack">
+                <figure class="tv-slide">
+                    <img src="assets/1.webp" alt="Tamim Hasan gallery photo 1" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/2.webp" alt="Tamim Hasan gallery photo 2" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/3.webp" alt="Tamim Hasan gallery photo 3" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/4.webp" alt="Tamim Hasan gallery photo 4" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/5.webp" alt="Tamim Hasan gallery photo 5" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 20%">
+                    <img src="assets/6.webp" alt="Tamim Hasan gallery photo 6" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 60%">
+                    <img src="assets/7.webp" alt="Tamim Hasan gallery photo 7" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 30%">
+                    <img src="assets/8.webp" alt="Tamim Hasan gallery photo 8" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 20%">
+                    <img src="assets/9.webp" alt="Tamim Hasan gallery photo 9" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/10.webp" alt="Tamim Hasan gallery photo 10" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/11.webp" alt="Tamim Hasan gallery photo 11" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/12.webp" alt="Tamim Hasan gallery photo 12" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 30%">
+                    <img src="assets/13.webp" alt="Tamim Hasan gallery photo 13" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/14.webp" alt="Tamim Hasan gallery photo 14" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/15.webp" alt="Tamim Hasan gallery photo 15" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide">
+                    <img src="assets/16.webp" alt="Tamim Hasan gallery photo 16" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 15%">
+                    <img src="assets/17.webp" alt="Tamim Hasan gallery photo 17" loading="lazy" draggable="false">
+                </figure>
+                <figure class="tv-slide" style="--focus: 25%">
+                    <img src="assets/18.webp" alt="Tamim Hasan gallery photo 18" loading="lazy" draggable="false">
+                </figure>
             </div>
 
-            <!-- Thumbnail Navigation -->
-            <div class="gallery-thumbnails" id="galleryThumbs">
-                <div class="thumb active" data-index="0"><img src="assets/1.png" alt="Gallery thumbnail 1" loading="lazy"></div>
-                <div class="thumb" data-index="1"><img src="assets/2.png" alt="Gallery thumbnail 2" loading="lazy"></div>
-                <div class="thumb" data-index="2"><img src="assets/3.png" alt="Gallery thumbnail 3" loading="lazy"></div>
-                <div class="thumb" data-index="3"><img src="assets/4.png" alt="Gallery thumbnail 4" loading="lazy"></div>
-                <div class="thumb" data-index="4"><img src="assets/5.png" alt="Gallery thumbnail 5" loading="lazy"></div>
-                <div class="thumb" data-index="5"><img src="assets/6.png" alt="Gallery thumbnail 6" loading="lazy"></div>
-                <div class="thumb" data-index="6"><img src="assets/7.png" alt="Gallery thumbnail 7" loading="lazy"></div>
-                <div class="thumb" data-index="7"><img src="assets/8.png" alt="Gallery thumbnail 8" loading="lazy"></div>
-                <div class="thumb" data-index="8"><img src="assets/9.png" alt="Gallery thumbnail 9" loading="lazy"></div>
-                <div class="thumb" data-index="9"><img src="assets/10.png" alt="Gallery thumbnail 10" loading="lazy"></div>
-                <div class="thumb" data-index="10"><img src="assets/11.png" alt="Gallery thumbnail 11" loading="lazy"></div>
-                <div class="thumb" data-index="11"><img src="assets/12.png" alt="Gallery thumbnail 12" loading="lazy"></div>
-                <div class="thumb" data-index="12"><img src="assets/13.png" alt="Gallery thumbnail 13" loading="lazy"></div>
-                <div class="thumb" data-index="13"><img src="assets/14.png" alt="Gallery thumbnail 14" loading="lazy"></div>
-                <div class="thumb" data-index="14"><img src="assets/15.png" alt="Gallery thumbnail 15" loading="lazy"></div>
-                <div class="thumb" data-index="15"><img src="assets/16.png" alt="Gallery thumbnail 16" loading="lazy"></div>
-                <div class="thumb" data-index="16"><img src="assets/17.png" alt="Gallery thumbnail 17" loading="lazy"></div>
-                <div class="thumb" data-index="17"><img src="assets/18.png" alt="Gallery thumbnail 18" loading="lazy"></div>
-            </div>
+            <button class="tv-arrow prev" id="galleryPrev" aria-label="Previous photo">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="tv-arrow next" id="galleryNext" aria-label="Next photo">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="tv-controls">
+            <div class="tv-dots" id="galleryDots"></div>
+            <button class="tv-play" id="galleryPlay" aria-label="Pause slideshow">
+                <i class="fas fa-pause"></i>
+            </button>
         </div>
     </div>
 </section>
@@ -858,6 +760,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>

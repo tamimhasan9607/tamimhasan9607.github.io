@@ -5236,3 +5236,189 @@ body.hero-light .hero .btn-secondary:hover {
     }
 }
 
+
+/* ============================================================
+   ✦ GALLERY: APPLE TV-STYLE CAROUSEL
+   A full-bleed track with the current photo wide in the centre and
+   its neighbours peeking in at both edges, looping endlessly. The
+   photos are 1:1, so the wide slide crops them; each slide can set
+   --focus (vertical object-position) to keep faces in frame. On
+   phones the slide goes square and shows the whole photo.
+   Below: Apple's dot strip (the active dot stretches and fills over
+   the autoplay interval) and a pause / play button.
+   ============================================================ */
+.tv-gallery {
+    --tv-w: min(1180px, 84vw);
+    --tv-gap: clamp(10px, 1.4vw, 20px);
+    --tv-dur: 5000ms;
+    --tv-ctrl-bg: rgba(0, 0, 0, 0.06);
+    --tv-dot: rgba(0, 0, 0, 0.28);
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+[data-theme="dark"] .tv-gallery {
+    --tv-ctrl-bg: rgba(255, 255, 255, 0.10);
+    --tv-dot: rgba(255, 255, 255, 0.35);
+}
+
+.tv-viewport {
+    position: relative;
+    overflow: hidden;
+}
+
+.tv-track {
+    display: flex;
+    gap: var(--tv-gap);
+    will-change: transform;
+    transition: transform 0.8s var(--ease);
+    touch-action: pan-y;
+}
+
+.tv-slide {
+    flex: 0 0 var(--tv-w);
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg-card);
+    border-radius: var(--r-md);
+    cursor: pointer;
+}
+
+.tv-slide.is-active { cursor: default; }
+
+.tv-slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 50% var(--focus, 50%);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ---------- Arrows: sit just inside the active slide, show on hover ---------- */
+.tv-arrow {
+    position: absolute;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.82);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: #1d1d1f;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity var(--dur) var(--ease), background var(--dur) var(--ease);
+    z-index: 2;
+}
+
+.tv-arrow.prev { left: calc((100% - var(--tv-w)) / 2 + 20px); }
+.tv-arrow.next { right: calc((100% - var(--tv-w)) / 2 + 20px); }
+
+.tv-viewport:hover .tv-arrow,
+.tv-arrow:focus-visible { opacity: 1; }
+
+.tv-arrow:hover { background: #ffffff; }
+
+@media (hover: none) {
+    .tv-arrow { display: none; }
+}
+
+/* ---------- Dots + play / pause ---------- */
+.tv-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.tv-dots {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 36px;
+    padding: 0 16px;
+    background: var(--tv-ctrl-bg);
+    border-radius: var(--r-pill);
+}
+
+.tv-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-pill);
+    background: var(--tv-dot);
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.4s var(--ease), background var(--dur) var(--ease);
+}
+
+.tv-dot:hover { background: var(--text-secondary); }
+
+.tv-dot.is-active {
+    width: 40px;
+    cursor: default;
+}
+
+/* the fill that runs across the active dot */
+.tv-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--text-primary);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.tv-dot.is-active::after { transform: scaleX(1); }
+
+.tv-gallery.is-playing .tv-dot.is-active.is-filling::after {
+    animation: tv-fill var(--tv-dur) linear forwards;
+}
+
+@keyframes tv-fill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+.tv-play {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--r-pill);
+    background: var(--tv-ctrl-bg);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease);
+}
+
+.tv-play:hover,
+.tv-dot:focus-visible,
+.tv-play:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.tv-play:hover { outline: none; background: var(--border-color); }
+
+/* ---------- Phones: square slides show the whole photo ---------- */
+@media (max-width: 768px) {
+    .tv-gallery { --tv-w: 84vw; }
+    .tv-slide { aspect-ratio: 1 / 1; }
+    .tv-dots { gap: 6px; padding: 0 12px; }
+    .tv-dot { width: 6px; height: 6px; }
+    .tv-dot.is-active { width: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tv-track { transition: none; }
+}
