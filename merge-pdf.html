@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merge PDF | Tamim Hasan</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
@@ -34,7 +36,7 @@
         .merge-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
+            border-radius: var(--r-lg);
             padding: 2.5rem;
             box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
@@ -55,10 +57,10 @@
             background: var(--gradient-primary);
             color: white;
             border: none;
-            border-radius: 50%;
+            border-radius: var(--r-pill);
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            box-shadow: 0 4px 15px rgba(20, 115, 230, 0.3);
             transition: all 0.3s;
             z-index: 999;
             display: flex;
@@ -68,7 +70,7 @@
 
         .help-button:hover {
             transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+            box-shadow: 0 8px 25px rgba(20, 115, 230, 0.4);
         }
 
         /* Tutorial Modal */
@@ -96,7 +98,7 @@
 
         .tutorial-content {
             background: var(--bg-card);
-            border-radius: 24px;
+            border-radius: var(--r-lg);
             max-width: 800px;
             width: 100%;
             max-height: 90vh;
@@ -123,12 +125,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
-            border-radius: 24px 24px 0 0;
+            background: linear-gradient(135deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.1));
+            border-radius: 0;
         }
 
         .tutorial-title {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 1.5rem;
             color: var(--text-primary);
             display: flex;
@@ -139,7 +141,7 @@
         .tutorial-close {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: var(--r-pill);
             border: 1px solid var(--border-color);
             background: var(--bg-primary);
             color: var(--text-secondary);
@@ -180,11 +182,11 @@
             height: 48px;
             background: var(--gradient-primary);
             color: white;
-            border-radius: 50%;
+            border-radius: var(--r-pill);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 1.25rem;
             font-weight: 700;
             flex-shrink: 0;
@@ -207,7 +209,7 @@
 
         .step-visual {
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             padding: 1rem;
             border: 1px solid var(--border-color);
             display: flex;
@@ -223,9 +225,9 @@
         }
 
         .quick-guide-banner {
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.1));
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.1));
+            border: 1px solid rgba(20, 115, 230, 0.2);
+            border-radius: var(--r-lg);
             padding: 1.5rem;
             margin-bottom: 2rem;
             display: flex;
@@ -238,14 +240,14 @@
         .quick-guide-banner:hover {
             transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.1);
+            box-shadow: 0 10px 20px -5px rgba(20, 115, 230, 0.1);
         }
 
         .quick-guide-icon {
             width: 48px;
             height: 48px;
             background: var(--gradient-primary);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -275,7 +277,7 @@
 
         .drop-zone {
             border: 3px dashed var(--border-color);
-            border-radius: 16px;
+            border-radius: var(--r-lg);
             padding: 3rem 2rem;
             text-align: center;
             transition: all 0.3s ease;
@@ -288,7 +290,7 @@
         .drop-zone:hover,
         .drop-zone.drag-over {
             border-color: var(--primary);
-            background: rgba(14, 165, 233, 0.05);
+            background: rgba(20, 115, 230, 0.05);
             transform: translateY(-2px);
         }
 
@@ -299,7 +301,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(14, 165, 233, 0.1);
+            background: rgba(20, 115, 230, 0.1);
             animation: pulse 1.5s ease-in-out infinite;
         }
 
@@ -345,7 +347,7 @@
             padding: 1rem 1.25rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             transition: all 0.2s ease;
             animation: slideIn 0.3s ease;
         }
@@ -370,7 +372,7 @@
             width: 40px;
             height: 40px;
             background: linear-gradient(135deg, #ef4444, #dc2626);
-            border-radius: 8px;
+            border-radius: var(--r-md);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -403,7 +405,7 @@
             color: white;
             width: 24px;
             height: 24px;
-            border-radius: 50%;
+            border-radius: var(--r-pill);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -420,7 +422,7 @@
         .file-btn {
             width: 32px;
             height: 32px;
-            border-radius: 6px;
+            border-radius: var(--r-sm);
             border: 1px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-secondary);
@@ -469,19 +471,19 @@
             background: var(--gradient-primary);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            box-shadow: 0 4px 15px rgba(20, 115, 230, 0.3);
             position: relative;
             overflow: hidden;
         }
 
         .btn-merge:hover:not(:disabled) {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+            box-shadow: 0 8px 25px rgba(20, 115, 230, 0.4);
         }
 
         .btn-merge:disabled {
@@ -497,7 +499,7 @@
             background: var(--bg-secondary);
             color: var(--text-primary);
             border: 2px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -517,7 +519,7 @@
             background: transparent;
             color: var(--primary);
             border: 1px solid var(--primary);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
@@ -547,7 +549,7 @@
         .progress-bar-bg {
             height: 8px;
             background: var(--bg-secondary);
-            border-radius: 4px;
+            border-radius: var(--r-sm);
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
@@ -557,7 +559,7 @@
             background: var(--gradient-primary);
             width: 0%;
             transition: width 0.3s ease;
-            border-radius: 4px;
+            border-radius: var(--r-sm);
         }
 
         .progress-text {
@@ -570,9 +572,9 @@
         .result-container {
             margin-top: 2rem;
             padding: 2rem;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(14, 165, 233, 0.1));
+            background: linear-gradient(135deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.1));
             border: 2px solid var(--secondary);
-            border-radius: 16px;
+            border-radius: var(--r-lg);
             text-align: center;
             display: none;
             animation: slideUp 0.5s ease;
@@ -597,7 +599,7 @@
             width: 64px;
             height: 64px;
             background: linear-gradient(135deg, #10b981, #059669);
-            border-radius: 50%;
+            border-radius: var(--r-pill);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -607,7 +609,7 @@
         }
 
         .result-title {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 1.5rem;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
@@ -640,7 +642,7 @@
         .tip-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             padding: 1.25rem;
             display: flex;
             align-items: flex-start;
@@ -650,8 +652,8 @@
         .tip-icon {
             width: 36px;
             height: 36px;
-            background: rgba(14, 165, 233, 0.1);
-            border-radius: 8px;
+            background: rgba(20, 115, 230, 0.1);
+            border-radius: var(--r-md);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -715,7 +717,7 @@
             width: 20px;
             height: 20px;
             border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
+            border-radius: var(--r-pill);
             border-top-color: white;
             animation: spin 1s ease-in-out infinite;
         }
@@ -735,7 +737,7 @@
             left: 0;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: var(--r-lg);
             padding: 0.5rem;
             min-width: 200px;
             box-shadow: var(--shadow-xl);
@@ -760,7 +762,7 @@
             padding: 0.75rem 1rem;
             color: var(--text-secondary);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--r-md);
             transition: all 0.2s;
             font-size: 0.9rem;
         }
@@ -814,8 +816,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-mark">Tamim</span>
-                <span class="logo-text">Hasan</span>
+                <span class="logo-mark">TH</span>
+                <span class="logo-text">Tamim Hasan</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
@@ -845,6 +847,10 @@
             </ul>
 
             <div class="nav-actions">
+                <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
+                    <i class="fas fa-expand"></i>
+                    <i class="fas fa-compress"></i>
+                </button>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-sun"></i>
                     <i class="fas fa-moon"></i>
@@ -1048,7 +1054,7 @@
                     </div>
                 </div>
 
-                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
+                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--r-lg); padding: 1.5rem; margin-top: 2rem;">
                     <h4 style="color: #f59e0b; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
                         <i class="fas fa-lightbulb"></i>
                         Pro Tips
@@ -1071,23 +1077,7 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="footer-logo-text">Tamim Hasan</span>
-                    <p>Building with purpose, leading with empathy.</p>
-                    <p style="margin-top: 0.5rem; font-family: monospace; color: var(--primary);">tamim.live</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#projects">Projects</a>
-                    <a href="index.html#contact">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Tamim Hasan. All rights reserved.</p>
-                <p style="font-family: monospace; opacity: 0.7;">tamim.live</p>
-            </div>
+            <p class="footer-copyright">&copy; 2025 Tamim Hasan. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1095,7 +1085,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=5"></script>
     <script>
         // PDF Merge Logic
         let pdfFiles = [];

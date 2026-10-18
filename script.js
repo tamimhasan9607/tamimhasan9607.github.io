@@ -3,7 +3,7 @@ class ThemeManager {
     constructor() {
         this.toggle = document.getElementById('themeToggle');
         this.html = document.documentElement;
-        this.currentTheme = localStorage.getItem('theme') || 'dark';
+        this.currentTheme = localStorage.getItem('theme') || 'light';
 
         this.init();
     }
@@ -26,6 +26,7 @@ class ThemeManager {
         const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
         this.applyTheme(newTheme);
     }
+
 }
 
 // Navigation
@@ -299,12 +300,12 @@ class FormHandler {
                 icon.className = 'fas fa-exclamation-circle';
                 msg.textContent = 'Oops! Something went wrong. Please try again.';
                 this.toast.classList.add('error');
-                this.toast.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                this.toast.style.background = 'var(--danger)';
             } else {
                 icon.className = 'fas fa-check-circle';
                 msg.textContent = 'Message sent successfully!';
                 this.toast.classList.remove('error');
-                this.toast.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                this.toast.style.background = 'var(--success)';
             }
 
             this.toast.classList.add('show');
@@ -644,6 +645,104 @@ class GallerySlider {
     }
 }
 
+
+// Liquid Glass
+// Tracks the pointer across a surface and writes its position into CSS custom
+// properties, so a specular highlight can follow the cursor. Skipped entirely
+// for touch input (no pointer to follow) and for reduced-motion users.
+class LiquidGlass {
+    constructor() {
+        this.selector = [
+            '.info-card-modern',
+            '.skill-category',
+            '.achievement-card',
+            '.carousel-slide .project-card',
+            '.certifications-section',
+            '.contact-method',
+            '.project-featured',
+            '.btn',
+            '.gallery-nav',
+            '.carousel-btn',
+            '.scroll-top'
+        ].join(',');
+
+        const stillness = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+        if (stillness.matches || !fine.matches) return;
+
+        this.init();
+    }
+
+    init() {
+        document.querySelectorAll(this.selector).forEach(el => {
+            el.classList.add('liquid');
+            el.addEventListener('pointermove', (e) => this.track(el, e), { passive: true });
+        });
+    }
+
+    track(el, e) {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--lg-x', ((e.clientX - r.left) / r.width * 100).toFixed(2) + '%');
+        el.style.setProperty('--lg-y', ((e.clientY - r.top) / r.height * 100).toFixed(2) + '%');
+    }
+}
+
+// Fullscreen toggle (desktop only, the CSS hides it on touch and narrow screens)
+class FullscreenToggle {
+    constructor() {
+        this.btn = document.getElementById('fullscreenToggle');
+        const root = document.documentElement;
+        if (!this.btn || !(root.requestFullscreen || root.webkitRequestFullscreen)) return;
+
+        this.btn.hidden = false;
+        this.btn.addEventListener('click', () => this.toggle());
+        document.addEventListener('fullscreenchange', () => this.onChange());
+        document.addEventListener('webkitfullscreenchange', () => this.onChange());
+    }
+
+    onChange() {
+        this.sync();
+        this.realignHero();
+    }
+
+    // The hero is sized to the viewport, but the browser keeps the old scroll
+    // offset across the switch, so a page sitting a few pixels down showed a
+    // strip of the next section under the band. If the reader was on the hero,
+    // put it back at the top once the new viewport has laid out; anywhere
+    // further down the page is left alone.
+    realignHero() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            const y = window.scrollY;
+            if (y > 0 && y <= hero.offsetHeight / 2) {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+        }));
+    }
+
+    current() {
+        return document.fullscreenElement || document.webkitFullscreenElement;
+    }
+
+    toggle() {
+        const root = document.documentElement;
+        if (this.current()) {
+            (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        } else {
+            const p = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+            if (p && p.catch) p.catch(() => {});
+        }
+    }
+
+    sync() {
+        const on = !!this.current();
+        this.btn.classList.toggle('is-fullscreen', on);
+        this.btn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
+        this.btn.title = on ? 'Exit fullscreen' : 'Fullscreen';
+    }
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
@@ -652,4 +751,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new FormHandler();
     new ProjectCarousel();
     new GallerySlider();
+    new LiquidGlass();
+    new FullscreenToggle();
 });

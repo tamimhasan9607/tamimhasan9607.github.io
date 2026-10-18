@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamim Hasan | Tech Innovator & ScrumMaster</title>
+    <title>Tamim</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
 
     <!-- SEO -->
-    <meta name="description" content="Tamim Hasan — certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact. Explore projects, skills, and achievements.">
+    <meta name="description" content="Tamim Hasan, certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact. Explore projects, skills, and achievements.">
     <meta name="keywords" content="Tamim Hasan, ScrumMaster, Tech Innovator, Business Analyst, Portfolio, VR Developer, Federation University">
     <meta name="author" content="Tamim Hasan">
     <link rel="canonical" href="https://tamim.live/">
@@ -29,21 +29,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
 
 </head>
-<body>
+<body class="hero-light">
     <div class="bg-pattern"></div>
     <div class="bg-gradient"></div>
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-mark">Tamim</span>
-                <span class="logo-text">Hasan</span>
+                <span class="logo-mark">TH</span>
+                <span class="logo-text">Tamim Hasan</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
@@ -75,6 +75,10 @@
 
 
             <div class="nav-actions">
+                <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
+                    <i class="fas fa-expand"></i>
+                    <i class="fas fa-compress"></i>
+                </button>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-sun"></i>
                     <i class="fas fa-moon"></i>
@@ -114,52 +118,12 @@
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
 
-                <div class="hero-stats">
-    <div class="stat-item">
-        <span class="stat-number" data-count="15">0+</span>
-        <span class="stat-label">Projects</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-        <span class="stat-number" data-count="3">0+</span>
-        <span class="stat-label">Years Experience</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-        <span class="stat-number" data-count="60">0+</span>
-        <span class="stat-label">Volunteer Hours</span>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-        <span class="stat-number" data-count="3">0+</span>
-        <span class="stat-label">Awards</span>
-    </div>
-</div>
             </div>
 
             <div class="hero-visual" data-animate="fade-up" data-delay="200">
                 <div class="geometric-profile">
-                    <div class="geo-shape shape-1"></div>
-                    <div class="geo-shape shape-2"></div>
-                    <div class="geo-shape shape-3"></div>
-
                     <div class="geo-image-container">
-                        <img src="assets/tamim.png" alt="Tamim Hasan" class="geo-image">
-                    </div>
-
-                    <div class="floating-tag tag-dev">
-                        <i class="fas fa-code"></i>
-                        <span>Developer</span>
-                    </div>
-
-                    <div class="floating-tag tag-scrum">
-                        <i class="fas fa-tasks"></i>
-                        <span>ScrumMaster</span>
-                    </div>
-
-                    <div class="floating-tag tag-analyst">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Business Analyst</span>
+                        <img src="assets/n1-clean.webp?v=3" alt="Tamim Hasan" class="geo-image">
                     </div>
                 </div>
             </div>
@@ -178,15 +142,8 @@
             <div class="about-visual-story" data-animate="fade-right">
                 <div class="image-collage">
                     <div class="image-main">
-                        <img src="assets/tamim3.png" alt="Tamim Hasan Portrait" class="img-main" loading="lazy">
+                        <img src="assets/n2-clean.webp" alt="Tamim Hasan Portrait" class="img-main" loading="lazy">
                         <div class="image-accent-shape"></div>
-                    </div>
-                    <div class="image-secondary">
-                        <img src="assets/tamim.png" alt="Tamim Hasan Professional" class="img-secondary" loading="lazy">
-                    </div>
-                    <div class="experience-float">
-                        <span class="exp-number">3+</span>
-                        <span class="exp-text">Years<br>Experience</span>
                     </div>
                 </div>
             </div>
@@ -197,36 +154,24 @@
 
                 <div class="info-cards-grid">
                     <div class="info-card-modern">
-                        <div class="card-icon blue">
-                            <i class="fas fa-code"></i>
-                        </div>
                         <div class="card-content">
                             <h3>Technical Excellence</h3>
                             <p>Dean's Commendation for Master's. Built VR anti-vaping experiences, EV predictive analytics, and AI-powered health apps.</p>
                         </div>
-                        <div class="card-hover-line"></div>
                     </div>
 
                     <div class="info-card-modern">
-                        <div class="card-icon green">
-                            <i class="fas fa-users"></i>
-                        </div>
                         <div class="card-content">
                             <h3>Leadership & Voice</h3>
                             <p>Chair of Student Senate, TEQSA 2024 representative. Recipient of 3 Federation Advantage Awards.</p>
                         </div>
-                        <div class="card-hover-line"></div>
                     </div>
 
                     <div class="info-card-modern">
-                        <div class="card-icon purple">
-                            <i class="fas fa-heart"></i>
-                        </div>
                         <div class="card-content">
                             <h3>Service & Empathy</h3>
                             <p>2+ years customer service experience. 60+ volunteer hours with RISE Crew, BARS, BRMC, Salvation Army.</p>
                         </div>
-                        <div class="card-hover-line"></div>
                     </div>
                 </div>
                 <a href="about-details.html"  class="btn btn-primary">
@@ -250,9 +195,8 @@
              <a href="vr-project.html" style="text-decoration: none; display: block;">
                 <div class="project-featured" data-animate="fade-up">
                     <div class="project-image">
-                        <div class="project-frame purple-gradient">
-                            <i class="fas fa-vr-cardboard"></i>
-                            <span>VR Experience</span>
+                        <div class="project-frame">
+                            <img src="assets/Tutorial%20Environment.png" alt="Beyond the Vape VR tutorial environment" class="project-frame-img" loading="lazy">
                         </div>
                     </div>
                     <div class="project-details">
@@ -478,9 +422,6 @@
             <!-- Data Science & Analytics -->
             <div class="skill-category" data-animate="fade-up" data-delay="100">
                 <div class="skill-header-modern">
-                    <div class="skill-icon-large blue">
-                        <i class="fas fa-database"></i>
-                    </div>
                     <div class="skill-title-wrap">
                         <h3>Data Science & Analytics</h3>
                         <p>Machine Learning, Deep Learning, Data Visualization</p>
@@ -505,9 +446,6 @@
             <!-- Project & Product Management -->
             <div class="skill-category" data-animate="fade-up" data-delay="150">
                 <div class="skill-header-modern">
-                    <div class="skill-icon-large pink">
-                        <i class="fas fa-tasks"></i>
-                    </div>
                     <div class="skill-title-wrap">
                         <h3>Project & Product Management</h3>
                         <p>Agile frameworks, Strategic Planning, ERP</p>
@@ -531,9 +469,6 @@
             <!-- Software Development & VR -->
             <div class="skill-category" data-animate="fade-up" data-delay="200">
                 <div class="skill-header-modern">
-                    <div class="skill-icon-large purple">
-                        <i class="fas fa-code"></i>
-                    </div>
                     <div class="skill-title-wrap">
                         <h3>Software Development & VR</h3>
                         <p>Unity, Version Control, IDEs</p>
@@ -556,9 +491,6 @@
             <!-- Web Development -->
             <div class="skill-category" data-animate="fade-up" data-delay="250">
                 <div class="skill-header-modern">
-                    <div class="skill-icon-large orange">
-                        <i class="fas fa-globe"></i>
-                    </div>
                     <div class="skill-title-wrap">
                         <h3>Web & Mobile Development</h3>
                         <p>Full-stack, Android, PHP</p>
@@ -589,26 +521,20 @@
         <div class="achievements-grid">
             <!-- Academic Excellence -->
             <div class="achievement-card featured" data-animate="fade-up" data-delay="100">
-                <div class="achievement-icon gold">
-                    <i class="fas fa-trophy"></i>
-                </div>
                 <div class="achievement-content">
                     <span class="achievement-year">2024</span>
                     <h3>Federation Advantage Awards</h3>
                     <p class="achievement-desc">Silver Level recognition across three categories:</p>
                     <ul class="achievement-list">
-                        <li><i class="fas fa-check"></i> Citizens Award</li>
-                        <li><i class="fas fa-check"></i> Communicators Award</li>
-                        <li><i class="fas fa-check"></i> Leaders Award</li>
+                        <li>Citizens Award</li>
+                        <li>Communicators Award</li>
+                        <li>Leaders Award</li>
                     </ul>
                 </div>
             </div>
 
             <!-- Dean's Recognition -->
             <div class="achievement-card" data-animate="fade-up" data-delay="150">
-                <div class="achievement-icon blue">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
                 <div class="achievement-content">
                     <span class="achievement-year">2024</span>
                     <h3>Dean's Commendation</h3>
@@ -619,9 +545,6 @@
 
             <!-- TEQSA Representation -->
             <div class="achievement-card" data-animate="fade-up" data-delay="200">
-                <div class="achievement-icon purple">
-                    <i class="fas fa-star"></i>
-                </div>
                 <div class="achievement-content">
                     <span class="achievement-year">2024</span>
                     <h3>TEQSA 2024 Conference</h3>
@@ -632,9 +555,6 @@
 
             <!-- Academic Honors -->
             <div class="achievement-card" data-animate="fade-up" data-delay="250">
-                <div class="achievement-icon green">
-                    <i class="fas fa-award"></i>
-                </div>
                 <div class="achievement-content">
                     <span class="achievement-year">2024</span>
                     <h3>Magna Cum Laude</h3>
@@ -645,9 +565,6 @@
 
             <!-- Senate Recognition -->
             <div class="achievement-card" data-animate="fade-up" data-delay="300">
-                <div class="achievement-icon orange">
-                    <i class="fas fa-users"></i>
-                </div>
                 <div class="achievement-content">
                     <span class="achievement-year">2024</span>
                     <h3>FedAwards Recognition</h3>
@@ -658,9 +575,6 @@
 
             <!-- Community Recognition -->
             <div class="achievement-card" data-animate="fade-up" data-delay="350">
-                <div class="achievement-icon pink">
-                    <i class="fas fa-heart"></i>
-                </div>
                 <div class="achievement-content">
                     <span class="achievement-year">2024</span>
                     <h3>Community Recognition Letter</h3>
@@ -675,24 +589,19 @@
             <h3 class="cert-title">Professional Certifications</h3>
             <div class="cert-grid">
                 <div class="cert-item">
-                    <i class="fas fa-certificate"></i>
                     <span>Certified ScrumMaster (CSM)</span>
                 </div>
                 <div class="cert-item">
-                    <i class="fas fa-certificate"></i>
                     <span>Product Management (PMI REP)</span>
                 </div>
                 <div class="cert-item">
-                    <i class="fas fa-certificate"></i>
                     <span>Kanban (PMI REP)</span>
                 </div>
 
                 <div class="cert-item">
-                    <i class="fas fa-certificate"></i>
                     <span>Working with Children Check</span>
                 </div>
                 <div class="cert-item">
-                    <i class="fas fa-certificate"></i>
                     <span>Australian Computer Society (ACS)</span>
                 </div>
             </div>
@@ -715,126 +624,126 @@
                     <!-- Slide 1 -->
                     <div class="gallery-slide active">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/1.png" alt="Tamim Hasan – gallery photo 1" class="gallery-img" loading="lazy">
+                            <img src="assets/1.png" alt="Tamim Hasan gallery photo 1" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 2 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/2.png" alt="Tamim Hasan – gallery photo 2" class="gallery-img" loading="lazy">
+                            <img src="assets/2.png" alt="Tamim Hasan gallery photo 2" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 3 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/3.png" alt="Tamim Hasan – gallery photo 3" class="gallery-img" loading="lazy">
+                            <img src="assets/3.png" alt="Tamim Hasan gallery photo 3" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 4 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/4.png" alt="Tamim Hasan – gallery photo 4" class="gallery-img" loading="lazy">
+                            <img src="assets/4.png" alt="Tamim Hasan gallery photo 4" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 5 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/5.png" alt="Tamim Hasan – gallery photo 5" class="gallery-img" loading="lazy">
+                            <img src="assets/5.png" alt="Tamim Hasan gallery photo 5" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 6 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/6.png" alt="Tamim Hasan – gallery photo 6" class="gallery-img" loading="lazy">
+                            <img src="assets/6.png" alt="Tamim Hasan gallery photo 6" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 7 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/7.png" alt="Tamim Hasan – gallery photo 7" class="gallery-img" loading="lazy">
+                            <img src="assets/7.png" alt="Tamim Hasan gallery photo 7" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 8 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/8.png" alt="Tamim Hasan – gallery photo 8" class="gallery-img" loading="lazy">
+                            <img src="assets/8.png" alt="Tamim Hasan gallery photo 8" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 9 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/9.png" alt="Tamim Hasan – gallery photo 9" class="gallery-img" loading="lazy">
+                            <img src="assets/9.png" alt="Tamim Hasan gallery photo 9" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 10 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/10.png" alt="Tamim Hasan – gallery photo 10" class="gallery-img" loading="lazy">
+                            <img src="assets/10.png" alt="Tamim Hasan gallery photo 10" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 11 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/11.png" alt="Tamim Hasan – gallery photo 11" class="gallery-img" loading="lazy">
+                            <img src="assets/11.png" alt="Tamim Hasan gallery photo 11" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 12 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/12.png" alt="Tamim Hasan – gallery photo 12" class="gallery-img" loading="lazy">
+                            <img src="assets/12.png" alt="Tamim Hasan gallery photo 12" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 13 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/13.png" alt="Tamim Hasan – gallery photo 13" class="gallery-img" loading="lazy">
+                            <img src="assets/13.png" alt="Tamim Hasan gallery photo 13" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 14 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/14.png" alt="Tamim Hasan – gallery photo 14" class="gallery-img" loading="lazy">
+                            <img src="assets/14.png" alt="Tamim Hasan gallery photo 14" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 15 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/15.png" alt="Tamim Hasan – gallery photo 15" class="gallery-img" loading="lazy">
+                            <img src="assets/15.png" alt="Tamim Hasan gallery photo 15" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 16 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/16.png" alt="Tamim Hasan – gallery photo 16" class="gallery-img" loading="lazy">
+                            <img src="assets/16.png" alt="Tamim Hasan gallery photo 16" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 17 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/17.png" alt="Tamim Hasan – gallery photo 17" class="gallery-img" loading="lazy">
+                            <img src="assets/17.png" alt="Tamim Hasan gallery photo 17" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Slide 18 -->
                     <div class="gallery-slide">
                         <div class="slide-image-wrapper full">
-                            <img src="assets/18.png" alt="Tamim Hasan – gallery photo 18" class="gallery-img" loading="lazy">
+                            <img src="assets/18.png" alt="Tamim Hasan gallery photo 18" class="gallery-img" loading="lazy">
                         </div>
                     </div>
 
@@ -893,7 +802,6 @@
 
                     <div class="contact-methods">
                         <div class="contact-method">
-                            <div class="method-icon"><i class="fas fa-envelope"></i></div>
                             <div class="method-details">
                                 <span class="method-label">Email</span>
                                 <a href="mailto:tamim.hasan9607@gmail.com">tamim.hasan9607@gmail.com</a>
@@ -936,26 +844,10 @@
     </section>
 
     <footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-logo-text">Tamim Hasan</span>
-                <p>Building with purpose, leading with empathy.</p>
-                <p style="margin-top: 0.5rem; font-family: monospace; color: var(--primary);">tamim.live</p>
-            </div>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
+        <div class="container">
+            <p class="footer-copyright">&copy; 2026 Tamim Hasan. All rights reserved.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Tamim Hasan. All rights reserved.</p>
-            <p style="font-family: monospace; opacity: 0.7;">tamim.live</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
@@ -966,6 +858,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>
