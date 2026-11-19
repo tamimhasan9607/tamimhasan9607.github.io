@@ -1,32 +1,24 @@
-// Theme Management
-class ThemeManager {
-    constructor() {
-        this.toggle = document.getElementById('themeToggle');
-        this.html = document.documentElement;
-        this.currentTheme = localStorage.getItem('theme') || 'light';
+// Listeners and timers tied to the current page end when the next page replaces it
+let pageLife;
+function renewPageLife() {
+    pageLife?.abort();
+    pageLife = new AbortController();
+    window.pageSignal = pageLife.signal;
+}
+renewPageLife();
 
-        this.init();
+// Site colors: "default" is the original white design
+const SITE_PALETTES = ['cream', 'blue', 'green', 'purple'];
+
+function setPalette(name) {
+    const root = document.documentElement;
+    if (SITE_PALETTES.includes(name)) {
+        root.dataset.palette = name;
+        localStorage.setItem('palette', name);
+    } else {
+        delete root.dataset.palette;
+        localStorage.removeItem('palette');
     }
-
-    init() {
-        this.applyTheme(this.currentTheme);
-
-        if (this.toggle) {
-            this.toggle.addEventListener('click', () => this.toggleTheme());
-        }
-    }
-
-    applyTheme(theme) {
-        this.html.setAttribute('data-theme', theme);
-        this.currentTheme = theme;
-        localStorage.setItem('theme', theme);
-    }
-
-    toggleTheme() {
-        const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-        this.applyTheme(newTheme);
-    }
-
 }
 
 // Navigation
@@ -43,7 +35,8 @@ class Navigation {
 
     init() {
         // Scroll handler
-        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('scroll', () => this.handleScroll(), { signal: pageLife.signal });
+        this.handleScroll();
 
         // Hamburger menu toggle
         if (this.hamburger) {
@@ -83,7 +76,7 @@ class Navigation {
                     this.closeMenu();
                 }
             }
-        });
+        }, { signal: pageLife.signal });
 
         // Scroll to top button
         if (this.scrollTop) {
@@ -118,29 +111,6 @@ class Navigation {
                 this.scrollTop.classList.remove('visible');
             }
         }
-
-        // Update active link based on scroll position
-        this.updateActiveLink();
-    }
-
-    updateActiveLink() {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.scrollY;
-
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                this.navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
     }
 
     toggleMenu() {
@@ -171,14 +141,13 @@ class Navigation {
         // Only handle internal anchor links
         if (href.startsWith('#')) {
             e.preventDefault();
-            const target = document.querySelector(href);
+            const target = href.length > 1 && document.querySelector(href);
 
             if (target) {
                 const offset = target.offsetTop - 80;
                 window.scrollTo({ top: offset, behavior: 'smooth' });
             }
         }
-        // For links to other pages with anchors (e.g., index.html#about), let default behavior work
     }
 }
 
@@ -218,6 +187,11 @@ class Animator {
         }, { threshold: 0.5 });
 
         this.counters.forEach(counter => counterObserver.observe(counter));
+
+        pageLife.signal.addEventListener('abort', () => {
+            observer.disconnect();
+            counterObserver.disconnect();
+        }, { once: true });
     }
 
     animateCounter(element) {
@@ -349,7 +323,7 @@ class ProjectCarousel {
                 this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
                 this.goToSlide(this.currentIndex);
             }
-        });
+        }, { signal: pageLife.signal });
     }
 
     createDots() {
@@ -552,7 +526,7 @@ class GallerySlider {
                 this.goTo(this.index + (dx < 0 ? 1 : -1));
                 setTimeout(() => { this.dragged = false; }, 0);
             }
-        });
+        }, { signal: pageLife.signal });
 
         // Keyboard navigation — only when gallery is visible AND no input is focused
         document.addEventListener('keydown', (e) => {
@@ -561,15 +535,22 @@ class GallerySlider {
             if (active && ['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName)) return;
             if (!this.onScreen) return;
             this.goTo(this.index + (e.key === 'ArrowRight' ? 1 : -1));
-        });
+        }, { signal: pageLife.signal });
 
-        window.addEventListener('resize', () => this.place(false));
-        document.addEventListener('visibilitychange', () => this.schedule());
+        window.addEventListener('resize', () => this.place(false), { signal: pageLife.signal });
+        document.addEventListener('visibilitychange', () => this.schedule(), { signal: pageLife.signal });
 
-        new IntersectionObserver(([entry]) => {
+        const visibility = new IntersectionObserver(([entry]) => {
             this.onScreen = entry.isIntersecting;
             this.schedule();
-        }, { threshold: 0.35 }).observe(this.root);
+        }, { threshold: 0.35 });
+        visibility.observe(this.root);
+
+        pageLife.signal.addEventListener('abort', () => {
+            visibility.disconnect();
+            this.playing = false;
+            clearTimeout(this.timer);
+        }, { once: true });
     }
 
     // target may run one past either end (-1 or count); the clones cover it
@@ -647,47 +628,6 @@ class GallerySlider {
 }
 
 
-// Liquid Glass
-// Tracks the pointer across a surface and writes its position into CSS custom
-// properties, so a specular highlight can follow the cursor. Skipped entirely
-// for touch input (no pointer to follow) and for reduced-motion users.
-class LiquidGlass {
-    constructor() {
-        this.selector = [
-            '.info-card-modern',
-            '.skill-category',
-            '.achievement-card',
-            '.carousel-slide .project-card',
-            '.certifications-section',
-            '.contact-method',
-            '.project-featured',
-            '.btn',
-            '.gallery-nav',
-            '.carousel-btn',
-            '.scroll-top'
-        ].join(',');
-
-        const stillness = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
-        if (stillness.matches || !fine.matches) return;
-
-        this.init();
-    }
-
-    init() {
-        document.querySelectorAll(this.selector).forEach(el => {
-            el.classList.add('liquid');
-            el.addEventListener('pointermove', (e) => this.track(el, e), { passive: true });
-        });
-    }
-
-    track(el, e) {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty('--lg-x', ((e.clientX - r.left) / r.width * 100).toFixed(2) + '%');
-        el.style.setProperty('--lg-y', ((e.clientY - r.top) / r.height * 100).toFixed(2) + '%');
-    }
-}
-
 // Fullscreen toggle (desktop only, the CSS hides it on touch and narrow screens)
 class FullscreenToggle {
     constructor() {
@@ -697,8 +637,9 @@ class FullscreenToggle {
 
         this.btn.hidden = false;
         this.btn.addEventListener('click', () => this.toggle());
-        document.addEventListener('fullscreenchange', () => this.onChange());
-        document.addEventListener('webkitfullscreenchange', () => this.onChange());
+        document.addEventListener('fullscreenchange', () => this.onChange(), { signal: pageLife.signal });
+        document.addEventListener('webkitfullscreenchange', () => this.onChange(), { signal: pageLife.signal });
+        this.sync();
     }
 
     onChange() {
@@ -744,14 +685,494 @@ class FullscreenToggle {
     }
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new ThemeManager();
+// Color picker: hover or tap the palette to fan out the available colors
+class PalettePicker {
+    constructor() {
+        this.root = document.getElementById('palette');
+        if (!this.root) return;
+
+        this.toggle = document.getElementById('paletteToggle');
+        this.swatches = [...this.root.querySelectorAll('[data-palette-choice]')];
+        this.positions = [[-48, 14], [-46, -24], [-20, -52], [20, -52]];
+        this.hovering = false;
+        this.sync();
+
+        this.root.addEventListener('pointerenter', (e) => {
+            if (e.pointerType !== 'mouse') return;
+            this.hovering = true;
+            this.setOpen(true);
+        });
+        this.root.addEventListener('pointerleave', (e) => {
+            if (e.pointerType !== 'mouse') return;
+            this.hovering = false;
+            if (!this.root.contains(document.activeElement) || !document.activeElement.matches(':focus-visible')) this.setOpen(false);
+        });
+        this.toggle.addEventListener('click', () => {
+            if (!this.hovering) this.setOpen(!this.isOpen());
+        });
+        this.swatches.forEach(swatch => swatch.addEventListener('click', () => {
+            setPalette(swatch.dataset.paletteChoice);
+            this.sync();
+            if (!this.hovering) {
+                this.setOpen(false);
+                this.toggle.focus();
+            }
+        }));
+        this.root.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen()) {
+                this.setOpen(false);
+                this.toggle.focus();
+            }
+        });
+        this.root.addEventListener('focusout', (e) => {
+            if (!this.root.contains(e.relatedTarget) && !this.hovering) this.setOpen(false);
+        });
+        document.addEventListener('pointerdown', (e) => {
+            if (!this.root.contains(e.target)) this.setOpen(false);
+        }, { signal: pageLife.signal });
+    }
+
+    isOpen() {
+        return this.root.classList.contains('is-open');
+    }
+
+    setOpen(open) {
+        this.root.classList.toggle('is-open', open);
+        this.toggle.setAttribute('aria-expanded', String(open));
+    }
+
+    sync() {
+        const current = document.documentElement.dataset.palette || 'default';
+        let order = 0;
+        this.swatches.forEach(swatch => {
+            const active = swatch.dataset.paletteChoice === current;
+            swatch.hidden = active;
+            if (active) return;
+            const [x, y] = this.positions[order];
+            swatch.style.setProperty('--x', x + 'px');
+            swatch.style.setProperty('--y', y + 'px');
+            swatch.style.setProperty('--order', order);
+            order += 1;
+        });
+    }
+}
+
+// Homepage intro
+// Splits the intro into words for the reveal, then restores the original text
+// so nothing about the finished page depends on the animation.
+class HeroIntro {
+    constructor() {
+        this.ready = new Promise(resolve => { this.markReady = resolve; });
+        this.hero = document.querySelector('.hero');
+        this.blocks = [...document.querySelectorAll('.hero-intro, .hero-current')];
+        if (!this.hero || !this.blocks.length) {
+            this.markReady();
+            return;
+        }
+
+        this.root = document.documentElement;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            this.root.classList.add('intro-done');
+            this.markReady();
+            return;
+        }
+
+        this.words = 0;
+        this.originals = this.blocks.map(block => block.innerHTML);
+        this.blocks.forEach(block => this.split(block));
+
+        const delay = this.root.classList.contains('page-entering') ? 450 : 0;
+        this.hero.style.setProperty('--intro-delay', delay + 'ms');
+        this.hero.style.setProperty('--intro-words', this.words);
+        this.root.classList.remove('intro-done');
+        this.root.classList.add('intro-run');
+
+        const finish = () => this.finish();
+        this.timer = setTimeout(finish, delay + this.words * 70 + 800);
+        pageLife.signal.addEventListener('abort', finish, { once: true });
+    }
+
+    split(node) {
+        [...node.childNodes].forEach(child => {
+            if (child.nodeType === Node.ELEMENT_NODE) {
+                if (child.tagName !== 'BR') this.split(child);
+                return;
+            }
+            if (child.nodeType !== Node.TEXT_NODE || !child.textContent.trim()) return;
+
+            const parts = document.createDocumentFragment();
+            child.textContent.split(/(\s+)/).forEach(part => {
+                if (!part) return;
+                if (!part.trim()) {
+                    parts.append(part);
+                    return;
+                }
+                const word = document.createElement('span');
+                const inner = document.createElement('span');
+                word.className = 'hero-word';
+                inner.style.setProperty('--word', this.words++);
+                inner.textContent = part;
+                word.append(inner);
+                parts.append(word);
+            });
+            child.replaceWith(parts);
+        });
+    }
+
+    finish() {
+        if (this.finished) return;
+        this.finished = true;
+        clearTimeout(this.timer);
+        this.blocks.forEach((block, i) => { block.innerHTML = this.originals[i]; });
+        this.root.classList.remove('intro-run');
+        this.root.classList.add('intro-done');
+        this.markReady();
+    }
+}
+
+// Homepage slider
+// After the intro, a bar fills and blue shutters change to the featured project,
+// then keeps alternating. It waits while off screen, in a hidden tab, while the
+// pointer rests on the bar, or while the keyboard is inside the bar.
+class HeroSlider {
+    constructor(intro) {
+        this.hero = document.querySelector('.hero');
+        this.track = document.querySelector('.hero-track');
+        if (!this.hero || !this.track) return;
+
+        this.slides = [...this.track.children];
+        this.segments = [...this.hero.querySelectorAll('.hero-segment')];
+        this.bar = this.hero.querySelector('.hero-bar');
+        this.index = 0;
+        this.addShutters();
+        this.holds = new Set();
+        this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        this.life = pageLife.signal;
+
+        this.segments.forEach((segment, i) => {
+            segment.addEventListener('click', () => this.go(i));
+            segment.addEventListener('animationend', (e) => {
+                if (e.animationName === 'hero-bar-fill') this.go((this.index + 1) % this.slides.length);
+            });
+        });
+        this.bar.addEventListener('pointerenter', () => this.hold('pointer', true));
+        this.bar.addEventListener('pointerleave', () => this.hold('pointer', false));
+        this.bar.addEventListener('focusin', (e) => this.hold('keyboard', e.target.matches(':focus-visible')));
+        this.bar.addEventListener('focusout', () => this.hold('keyboard', false));
+        document.addEventListener('visibilitychange', () => this.hold('hidden', document.hidden), { signal: this.life });
+        this.hold('hidden', document.hidden);
+
+        const visibility = new IntersectionObserver(([entry]) => this.hold('offscreen', !entry.isIntersecting), { threshold: 0.5 });
+        visibility.observe(this.hero);
+        this.life.addEventListener('abort', () => visibility.disconnect(), { once: true });
+
+        this.hero.classList.toggle('is-static', this.reduced);
+        intro.ready.then(() => {
+            if (this.life.aborted) return;
+            this.hero.querySelector('.hero-project-image').loading = 'eager';
+            this.go(0);
+        });
+    }
+
+    addShutters() {
+        this.hero.querySelectorAll('.geometric-profile').forEach(profile => {
+            const shutters = document.createElement('div');
+            shutters.className = 'hero-shutters';
+            shutters.setAttribute('aria-hidden', 'true');
+            for (let i = 0; i < 6; i++) {
+                const shutter = document.createElement('i');
+                shutter.style.setProperty('--shutter', i);
+                shutters.append(shutter);
+            }
+            profile.append(shutters);
+        });
+    }
+
+    hold(reason, active) {
+        if (active) this.holds.add(reason);
+        else this.holds.delete(reason);
+        this.hero.classList.toggle('is-paused', this.holds.size > 0);
+    }
+
+    go(index) {
+        if (index !== this.index && !this.reduced) this.hero.classList.add('has-switched');
+        this.index = index;
+        this.slides.forEach((slide, i) => {
+            slide.inert = i !== index;
+            slide.toggleAttribute('aria-hidden', i !== index);
+            if (i !== index) slide.setAttribute('aria-hidden', 'true');
+        });
+        this.segments.forEach(segment => {
+            segment.classList.remove('is-active');
+            segment.removeAttribute('aria-current');
+        });
+        void this.hero.offsetWidth;
+        const active = this.segments[index];
+        active.style.setProperty('--hero-dwell', active.dataset.dwell + 'ms');
+        active.classList.add('is-active');
+        active.setAttribute('aria-current', 'true');
+    }
+}
+
+// Page transitions
+// Links between pages load the next page in the background first, then slide it
+// in within this window, so every click animates the same way. Each page is still
+// a real HTML file: anything unsupported falls back to a normal page load.
+class PageRouter {
+    constructor() {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!document.startViewTransition || reduced) return;
+
+        this.pages = new Map();
+        this.scrollPositions = new Map();
+        this.navigationId = 0;
+        this.path = location.pathname;
+        this.index = history.state?.pageIndex ?? 0;
+        this.key = history.state?.pageKey ?? this.newKey();
+
+        history.scrollRestoration = 'manual';
+        history.replaceState({ ...history.state, pageKey: this.key, pageIndex: this.index }, '', location.href);
+        document.head.querySelectorAll('style').forEach(style => { style.dataset.pageStyle = ''; });
+
+        document.addEventListener('click', (e) => this.onClick(e));
+        window.addEventListener('popstate', (e) => this.onPopState(e));
+        ['pointerover', 'focusin', 'touchstart'].forEach(type => {
+            document.addEventListener(type, (e) => this.onIntent(e), { passive: true });
+        });
+        this.preloadMenuPages();
+    }
+
+    newKey() {
+        return Math.random().toString(36).slice(2);
+    }
+
+    // The page a link leads to, or null when the browser should handle it
+    linkTarget(link) {
+        if (!link || link.hasAttribute('download')) return null;
+        if (link.target && link.target !== '_self') return null;
+        const url = new URL(link.href, location.href);
+        if (url.origin !== location.origin) return null;
+        if (!/(\.html|\/)$/.test(url.pathname)) return null;
+        return url;
+    }
+
+    onClick(e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const url = this.linkTarget(e.target.closest?.('a[href]'));
+        if (!url) return;
+
+        if (url.pathname === this.path) {
+            if (url.hash) return;
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        e.preventDefault();
+        this.navigate(url, { push: true });
+    }
+
+    onIntent(e) {
+        const url = this.linkTarget(e.target.closest?.('a[href]'));
+        if (url && url.pathname !== this.path) this.load(url).catch(() => {});
+    }
+
+    onPopState(e) {
+        if (location.pathname === this.path) return;
+        const index = e.state?.pageIndex ?? 0;
+        this.navigate(new URL(location.href), {
+            push: false,
+            back: index < this.index,
+            top: this.scrollPositions.get(e.state?.pageKey) || 0,
+            key: e.state?.pageKey ?? this.newKey(),
+            index
+        });
+    }
+
+    preloadMenuPages() {
+        if (navigator.connection?.saveData) return;
+        const preload = () => document.querySelectorAll('.nav-menu a[href]').forEach(link => {
+            const url = this.linkTarget(link);
+            if (url && url.pathname !== this.path) this.load(url).catch(() => {});
+        });
+        if (window.requestIdleCallback) requestIdleCallback(preload, { timeout: 2500 });
+        else setTimeout(preload, 1200);
+    }
+
+    load(url) {
+        const key = url.pathname;
+        if (!this.pages.has(key)) {
+            const page = fetch(key, { credentials: 'same-origin' }).then(response => {
+                const type = response.headers.get('content-type') || '';
+                if (!response.ok || !type.includes('text/html')) throw new Error('Page unavailable');
+                return response.text();
+            });
+            page.catch(() => this.pages.delete(key));
+            this.pages.set(key, page);
+        }
+        return this.pages.get(key);
+    }
+
+    // Everything the first screen needs, so nothing pops in during the slide
+    async prepare(next) {
+        const have = (selector, attr, href) =>
+            [...document.querySelectorAll(selector)].some(el => el[attr] === href);
+
+        const styles = [...next.head.querySelectorAll('link[rel="stylesheet"]')]
+            .filter(link => !have('link[rel="stylesheet"]', 'href', link.href))
+            .map(link => this.addToHead(link.cloneNode()));
+        const scripts = [...next.head.querySelectorAll('script[src]')]
+            .filter(script => !have('script[src]', 'src', script.src))
+            .map(script => {
+                const el = document.createElement('script');
+                el.src = script.src;
+                el.async = false;
+                return this.addToHead(el);
+            });
+        await Promise.all([...styles, ...scripts]);
+
+        const images = [...next.querySelectorAll('img:not([loading="lazy"])')].slice(0, 6).map(img => {
+            const image = new Image();
+            image.src = img.src;
+            return image.decode().catch(() => {});
+        });
+        await Promise.race([Promise.all(images), new Promise(done => setTimeout(done, 1500))]);
+    }
+
+    addToHead(el) {
+        return new Promise((resolve, reject) => {
+            el.onload = resolve;
+            el.onerror = reject;
+            document.head.appendChild(el);
+        });
+    }
+
+    startProgress() {
+        document.querySelector('.page-progress')?.remove();
+        this.progress = document.createElement('div');
+        this.progress.className = 'page-progress';
+        document.documentElement.appendChild(this.progress);
+    }
+
+    finishProgress() {
+        const bar = this.progress;
+        if (!bar) return;
+        bar.classList.add('is-done');
+        setTimeout(() => bar.remove(), 450);
+    }
+
+    async navigate(url, { push, back = false, top = 0, key, index }) {
+        const id = ++this.navigationId;
+        this.startProgress();
+
+        let next;
+        try {
+            const html = await this.load(url);
+            next = new DOMParser().parseFromString(html, 'text/html');
+            await this.prepare(next);
+        } catch (error) {
+            location.assign(url.href);
+            return;
+        }
+        if (id !== this.navigationId) return;
+
+        const root = document.documentElement;
+        root.toggleAttribute('data-nav-back', back);
+
+        const transition = document.startViewTransition(() => {
+            // stop any smooth scroll still running on the page being left
+            window.scrollTo({ top: window.scrollY, behavior: 'instant' });
+            this.scrollPositions.set(this.key, window.scrollY);
+            if (push) {
+                this.key = this.newKey();
+                this.index += 1;
+                history.pushState({ pageKey: this.key, pageIndex: this.index }, '', url.href);
+            } else {
+                this.key = key;
+                this.index = index;
+            }
+            this.path = url.pathname;
+            this.show(next, url, top);
+        });
+
+        transition.updateCallbackDone.catch(() => location.assign(url.href));
+        transition.ready.catch(() => {});
+        transition.finished.finally(() => {
+            if (id !== this.navigationId) return;
+            root.removeAttribute('data-nav-back');
+            root.classList.remove('page-entering');
+            this.finishProgress();
+        }).catch(() => {});
+    }
+
+    show(next, url, top) {
+        document.title = next.title;
+        ['meta[name="description"]', 'link[rel="canonical"]'].forEach(selector => {
+            const current = document.head.querySelector(selector);
+            const incoming = next.head.querySelector(selector);
+            if (current && incoming) current.replaceWith(document.adoptNode(incoming));
+        });
+
+        document.head.querySelectorAll('style[data-page-style]').forEach(style => style.remove());
+        next.head.querySelectorAll('style').forEach(style => {
+            style.dataset.pageStyle = '';
+            document.head.appendChild(document.adoptNode(style));
+        });
+
+        const inlineScripts = [...next.body.querySelectorAll('script')]
+            .filter(script => !script.src)
+            .map(script => script.textContent);
+        next.body.querySelectorAll('script').forEach(script => script.remove());
+
+        renewPageLife();
+        document.documentElement.classList.add('page-entering');
+        document.body.className = next.body.className;
+        document.body.removeAttribute('style');
+        document.body.replaceChildren(...[...next.body.childNodes].map(node => document.adoptNode(node)));
+
+        inlineScripts.forEach(code => {
+            try {
+                new Function(code)();
+            } catch (error) {
+                console.error(error);
+            }
+        });
+        startPage();
+
+        const target = url.hash && document.getElementById(url.hash.slice(1));
+        const place = () => {
+            if (target) target.scrollIntoView({ behavior: 'instant' });
+            else window.scrollTo({ top, behavior: 'instant' });
+        };
+        place();
+        requestAnimationFrame(place);
+
+        // the first screen arrives finished; lower content still fades in on scroll
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('animated');
+        });
+
+        const main = document.querySelector('main');
+        if (main) {
+            main.tabIndex = -1;
+            main.focus({ preventScroll: true });
+        }
+    }
+}
+
+// Set up everything that belongs to the current page
+function startPage() {
+    new PalettePicker();
     new Navigation();
     new Animator();
     new FormHandler();
     new ProjectCarousel();
     new GallerySlider();
-    new LiquidGlass();
     new FullscreenToggle();
+    new HeroSlider(new HeroIntro());
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    startPage();
+    new PageRouter();
 });

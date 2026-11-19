@@ -2,16 +2,18 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <script>document.documentElement.dataset.theme = 'light'; try { var p = localStorage.getItem('palette'); if (/^(cream|blue|green|purple)$/.test(p)) document.documentElement.dataset.palette = p; } catch (e) {}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge PDF | Tamim Hasan</title>
+    <meta name="description" content="Combine multiple PDFs into one document instantly. No upload limits, no watermarks, 100% free and private.">
+    <title>Merge PDF | Tamim</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=36">
 
     <!-- PDF-lib for client-side PDF merging -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -50,8 +52,8 @@
         /* Help Button */
         .help-button {
             position: fixed;
-            bottom: 2rem;
-            right: 6rem;
+            bottom: 1.5rem;
+            right: 8.25rem;
             width: 56px;
             height: 56px;
             background: var(--gradient-primary);
@@ -60,7 +62,7 @@
             border-radius: var(--r-pill);
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(20, 115, 230, 0.3);
+            box-shadow: 0 4px 15px color-mix(in srgb, var(--primary) 30%, transparent);
             transition: all 0.3s;
             z-index: 999;
             display: flex;
@@ -70,7 +72,7 @@
 
         .help-button:hover {
             transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(20, 115, 230, 0.4);
+            box-shadow: 0 8px 25px color-mix(in srgb, var(--primary) 40%, transparent);
         }
 
         /* Tutorial Modal */
@@ -81,7 +83,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
             z-index: 10000;
             display: none;
             align-items: center;
@@ -125,8 +126,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.1));
-            border-radius: 0;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 10%, transparent));
+            border-radius: var(--r-lg) var(--r-lg) 0 0;
         }
 
         .tutorial-title {
@@ -225,8 +226,8 @@
         }
 
         .quick-guide-banner {
-            background: linear-gradient(135deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.1));
-            border: 1px solid rgba(20, 115, 230, 0.2);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 10%, transparent));
+            border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
             border-radius: var(--r-lg);
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -240,7 +241,7 @@
         .quick-guide-banner:hover {
             transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 10px 20px -5px rgba(20, 115, 230, 0.1);
+            box-shadow: 0 10px 20px -5px color-mix(in srgb, var(--primary) 10%, transparent);
         }
 
         .quick-guide-icon {
@@ -270,11 +271,6 @@
             color: var(--text-muted);
         }
 
-        .quick-guide-arrow {
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-
         .drop-zone {
             border: 3px dashed var(--border-color);
             border-radius: var(--r-lg);
@@ -290,7 +286,7 @@
         .drop-zone:hover,
         .drop-zone.drag-over {
             border-color: var(--primary);
-            background: rgba(20, 115, 230, 0.05);
+            background: color-mix(in srgb, var(--primary) 5%, transparent);
             transform: translateY(-2px);
         }
 
@@ -301,7 +297,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(20, 115, 230, 0.1);
+            background: color-mix(in srgb, var(--primary) 10%, transparent);
             animation: pulse 1.5s ease-in-out infinite;
         }
 
@@ -476,14 +472,14 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(20, 115, 230, 0.3);
+            box-shadow: 0 4px 15px color-mix(in srgb, var(--primary) 30%, transparent);
             position: relative;
             overflow: hidden;
         }
 
         .btn-merge:hover:not(:disabled) {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(20, 115, 230, 0.4);
+            box-shadow: 0 8px 25px color-mix(in srgb, var(--primary) 40%, transparent);
         }
 
         .btn-merge:disabled {
@@ -572,7 +568,7 @@
         .result-container {
             margin-top: 2rem;
             padding: 2rem;
-            background: linear-gradient(135deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.1));
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 10%, transparent));
             border: 2px solid var(--secondary);
             border-radius: var(--r-lg);
             text-align: center;
@@ -652,7 +648,7 @@
         .tip-icon {
             width: 36px;
             height: 36px;
-            background: rgba(20, 115, 230, 0.1);
+            background: color-mix(in srgb, var(--primary) 10%, transparent);
             border-radius: var(--r-md);
             display: flex;
             align-items: center;
@@ -707,8 +703,8 @@
             }
 
             .help-button {
-                right: 2rem;
-                bottom: 5rem;
+                right: 5.25rem;
+                bottom: 1.5rem;
             }
         }
 
@@ -817,44 +813,17 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <span class="logo-mark">TH</span>
-                <span class="logo-text">Tamim Hasan</span>
+                <span class="logo-text">Tamim</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
-                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-                <li><a href="index.html#achievements" class="nav-link">Achievements</a></li>
-                <li class="nav-item-dropdown">
-                    <a href="#" class="nav-link" onclick="return false;">
-                        Tools <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 0.25rem;"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-label">Free Utilities</div>
-                        <a href="merge-pdf.html" class="dropdown-item active">
-                            <i class="fas fa-file-pdf"></i>
-                            <span>PDF Merger</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="index.html#contact" class="dropdown-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Request a Tool</span>
-                        </a>
-                    </div>
-                </li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="about-details.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Showcase</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
             <div class="nav-actions">
-                <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
-                    <i class="fas fa-expand"></i>
-                    <i class="fas fa-compress"></i>
-                </button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </button>
                 <button class="hamburger" id="hamburger" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -886,9 +855,6 @@
                 <div class="quick-guide-text">
                     <h3>First time here?</h3>
                     <p>Click here to see a step-by-step guide on how to use this tool</p>
-                </div>
-                <div class="quick-guide-arrow">
-                    <i class="fas fa-arrow-right"></i>
                 </div>
             </div>
         </section>
@@ -1024,7 +990,6 @@
                         <h3><i class="fas fa-sort-amount-down"></i> Arrange Order (Important!)</h3>
                         <p>Files are merged from top to bottom. Use the <strong>up</strong> and <strong>down</strong> arrow buttons to arrange the order. The file at the top will be the first pages of your merged PDF.</p>
                         <div class="step-visual">
-                            <i class="fas fa-arrows-alt-v"></i>
                             <span>File at top = First pages • File at bottom = Last pages</span>
                         </div>
                     </div>
@@ -1061,7 +1026,7 @@
                     </h4>
                     <ul style="color: var(--text-secondary); padding-left: 1.5rem; line-height: 1.8; margin: 0;">
                         <li>Files are numbered in the order they will appear in the final PDF</li>
-                        <li>You can merge up to 50+ PDFs at once - there's no strict limit</li>
+                        <li>You can merge 50+ PDFs at once, with no strict limit</li>
                         <li>If the download doesn't start automatically, check your browser's download bar</li>
                         <li>The merged file will be named "merged-document.pdf" by default</li>
                     </ul>
@@ -1077,15 +1042,34 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-copyright">&copy; 2025 Tamim Hasan. All rights reserved.</p>
+            <p class="footer-copyright">&copy; 2026 Tamim. All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="corner-controls">
+        <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
+            <i class="fas fa-expand"></i>
+            <i class="fas fa-compress"></i>
+        </button>
+        <div class="palette" id="palette">
+            <button type="button" class="palette-toggle" id="paletteToggle" aria-label="Change site colors" aria-expanded="false">
+                <i class="fas fa-palette"></i>
+            </button>
+            <div class="palette-swatches" role="group" aria-label="Site colors">
+                <button type="button" class="palette-swatch" data-palette-choice="default" style="--swatch: #ffffff" aria-label="White"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="cream" style="--swatch: #ece6d4" aria-label="Cream"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="blue" style="--swatch: #004293" aria-label="Blue"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="green" style="--swatch: #015422" aria-label="Green"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="purple" style="--swatch: #36004e" aria-label="Purple"></button>
+            </div>
+        </div>
+    </div>
 
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=14"></script>
     <script>
         // PDF Merge Logic
         let pdfFiles = [];
@@ -1129,7 +1113,7 @@
             if (e.key === 'Escape' && tutorialModal.classList.contains('active')) {
                 closeTutorial();
             }
-        });
+        }, { signal: window.pageSignal });
 
         // Click to browse
         dropZone.addEventListener('click', () => fileInput.click());
@@ -1291,6 +1275,9 @@
                 mergeBtn.innerHTML = '<i class="fas fa-magic"></i> <span>Merge PDFs</span>';
             }
         }
+
+        // Called from onclick attributes in the page
+        Object.assign(window, { openTutorial, closeTutorial, moveFile, removeFile });
 
         // Initialize
         updateUI();

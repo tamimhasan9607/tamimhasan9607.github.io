@@ -2,20 +2,22 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <script>document.documentElement.dataset.theme = 'light'; try { var p = localStorage.getItem('palette'); if (/^(cream|blue|green|purple)$/.test(p)) document.documentElement.dataset.palette = p; } catch (e) {}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An immersive educational VR experience developed to raise awareness about vaping using Meta Quest 3, Unity, and Blender.">
     <title>Beyond the Vape | VicHealth Anti-Vaping VR Project</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=36">
 
     <style>
         :root {
-            --vr-accent: #1473e6;
+            --vr-accent: var(--primary);
         }
 
         /* Hero Section */
@@ -141,7 +143,7 @@
 
         .btn-primary-vr:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(20, 115, 230, 0.4);
+            box-shadow: 0 8px 25px color-mix(in srgb, var(--primary) 40%, transparent);
         }
 
         .btn-secondary-vr {
@@ -181,13 +183,13 @@
         .overview-card:hover {
             transform: translateY(-5px);
             border-color: var(--vr-accent);
-            box-shadow: 0 20px 40px -15px rgba(20, 115, 230, 0.2);
+            box-shadow: 0 20px 40px -15px color-mix(in srgb, var(--primary) 20%, transparent);
         }
 
         .overview-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, rgba(20, 115, 230, 0.2), rgba(20, 115, 230, 0.2));
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 20%, transparent), color-mix(in srgb, var(--primary) 20%, transparent));
             border-radius: var(--r-lg);
             display: flex;
             align-items: center;
@@ -213,7 +215,7 @@
             font-family: 'Source Sans 3', sans-serif;
             font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #1473e6, #1473e6);
+            background: linear-gradient(135deg, var(--primary), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
@@ -252,7 +254,7 @@
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #1473e6, #1473e6);
+            background: linear-gradient(135deg, var(--primary), var(--primary));
             border-radius: var(--r-lg);
             display: flex;
             align-items: center;
@@ -318,7 +320,7 @@
         .tech-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 10px 25px -5px rgba(20, 115, 230, 0.15);
+            box-shadow: 0 10px 25px -5px color-mix(in srgb, var(--primary) 15%, transparent);
         }
 
         .tech-icon-wrapper {
@@ -455,7 +457,7 @@
         .gallery-item:hover {
             transform: translateY(-5px);
             border-color: var(--vr-accent);
-            box-shadow: 0 20px 40px -15px rgba(20, 115, 230, 0.2);
+            box-shadow: 0 20px 40px -15px color-mix(in srgb, var(--primary) 20%, transparent);
         }
 
         .gallery-item img {
@@ -493,7 +495,7 @@
         /* Video Section */
         .video-section {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, rgba(20, 115, 230, 0.05), rgba(20, 115, 230, 0.05));
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 5%, transparent), color-mix(in srgb, var(--primary) 5%, transparent));
         }
 
         .video-grid {
@@ -570,7 +572,7 @@
         .result-item:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px -15px rgba(20, 115, 230, 0.2);
+            box-shadow: 0 20px 40px -15px color-mix(in srgb, var(--primary) 20%, transparent);
         }
 
         .result-number {
@@ -761,69 +763,17 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <span class="logo-mark">TH</span>
-                <span class="logo-text">Tamim Hasan</span>
+                <span class="logo-text">Tamim</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#projects" class="nav-link active">Projects</a></li>
-                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-                <li><a href="index.html#achievements" class="nav-link">Achievements</a></li>
-                <li class="nav-item-dropdown" style="position: relative;">
-                    <a href="#" class="nav-link" onclick="return false;" style="display: flex; align-items: center; gap: 0.25rem;">
-                        Tools <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
-                    </a>
-                    <div class="dropdown-menu" style="position: absolute; top: 100%; left: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--r-lg); padding: 0.5rem; min-width: 200px; box-shadow: var(--shadow-xl); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s; z-index: 1001; margin-top: 0.5rem;">
-                        <div style="padding: 0.5rem 1rem; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Free Utilities</div>
-                        <a href="merge-pdf.html" class="dropdown-item" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: var(--r-md); transition: all 0.2s; font-size: 0.9rem;">
-                            <i class="fas fa-file-pdf" style="width: 20px; text-align: center;"></i>
-                            <span>PDF Merger</span>
-                        </a>
-                        <div style="height: 1px; background: var(--border-color); margin: 0.5rem 0;"></div>
-                        <a href="index.html#contact" class="dropdown-item" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: var(--r-md); transition: all 0.2s; font-size: 0.9rem;">
-                            <i class="fas fa-envelope" style="width: 20px; text-align: center;"></i>
-                            <span>Request a Tool</span>
-                        </a>
-                    </div>
-                </li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="about-details.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link active">Showcase</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
-            <style>
-                .nav-item-dropdown:hover .dropdown-menu {
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                    transform: translateY(0) !important;
-                }
-                .dropdown-item:hover {
-                    background: var(--bg-secondary) !important;
-                    color: var(--primary) !important;
-                }
-                @media (max-width: 768px) {
-                    .dropdown-menu {
-                        position: static !important;
-                        opacity: 1 !important;
-                        visibility: visible !important;
-                        transform: none !important;
-                        box-shadow: none !important;
-                        border: none !important;
-                        background: transparent !important;
-                        margin-top: 0 !important;
-                        padding-left: 1rem !important;
-                    }
-                }
-            </style>
-
             <div class="nav-actions">
-                <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
-                    <i class="fas fa-expand"></i>
-                    <i class="fas fa-compress"></i>
-                </button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </button>
                 <button class="hamburger" id="hamburger" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -877,7 +827,7 @@
         <!-- Overview Section -->
         <section class="overview-section">
             <div class="section-header">
-                <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Project Overview</span>
+                <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Project Overview</span>
                 <h2 class="section-title">Key Project Metrics</h2>
             </div>
 
@@ -905,7 +855,7 @@
         <!-- Features Section -->
         <section class="features-section">
             <div class="section-header">
-                <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Features</span>
+                <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Features</span>
                 <h2 class="section-title">Interactive Experience Elements</h2>
             </div>
 
@@ -963,7 +913,7 @@
         <!-- Tech Stack Section -->
         <section class="tech-section">
             <div class="section-header">
-                <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Technology Stack</span>
+                <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Technology Stack</span>
                 <h2 class="section-title">Tools & Technologies</h2>
             </div>
 
@@ -1014,7 +964,7 @@
         <section class="process-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Development Process</span>
+                    <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Development Process</span>
                     <h2 class="section-title">Agile Sprint Breakdown</h2>
                 </div>
 
@@ -1052,7 +1002,7 @@
         <!-- Gallery Section -->
         <section class="gallery-section" id="gallery">
             <div class="section-header">
-                <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Gallery</span>
+                <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Gallery</span>
                 <h2 class="section-title">Project Screenshots</h2>
             </div>
 
@@ -1105,7 +1055,7 @@
         <section class="video-section" id="demo">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Video Demonstrations</span>
+                    <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Video Demonstrations</span>
                     <h2 class="section-title">Watch the Experience</h2>
                 </div>
 
@@ -1166,7 +1116,7 @@
         <!-- Results Section -->
         <section class="results-section">
             <div class="section-header">
-                <span class="section-tag" style="color: var(--vr-accent); border-color: rgba(20, 115, 230, 0.3); background: rgba(20, 115, 230, 0.1);">Impact</span>
+                <span class="section-tag" style="color: var(--vr-accent); border-color: color-mix(in srgb, var(--primary) 30%, transparent); background: color-mix(in srgb, var(--primary) 10%, transparent);">Impact</span>
                 <h2 class="section-title">Project Outcomes</h2>
             </div>
 
@@ -1202,8 +1152,7 @@
         <!-- Project Navigation -->
         <section class="project-nav">
             <div class="project-nav-content">
-                <a href="index.html#projects" class="nav-project">
-                    <i class="fas fa-arrow-left"></i>
+                <a href="projects.html" class="nav-project">
                     <div>
                         <span style="display: block; font-size: 0.875rem; color: var(--text-muted);">Previous</span>
                         <span>All Projects</span>
@@ -1211,7 +1160,6 @@
                 </a>
 
                 <a href="about-details.html" class="nav-project" style="flex-direction: row-reverse;">
-                    <i class="fas fa-arrow-right"></i>
                     <div style="text-align: right;">
                         <span style="display: block; font-size: 0.875rem; color: var(--text-muted);">Next</span>
                         <span>About Me</span>
@@ -1223,41 +1171,35 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-copyright">&copy; 2025 Tamim Hasan. Built with Unity and a passion for VR.</p>
+            <p class="footer-copyright">&copy; 2026 Tamim. Built with Unity and a passion for VR.</p>
         </div>
     </footer>
+
+    <div class="corner-controls">
+        <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
+            <i class="fas fa-expand"></i>
+            <i class="fas fa-compress"></i>
+        </button>
+        <div class="palette" id="palette">
+            <button type="button" class="palette-toggle" id="paletteToggle" aria-label="Change site colors" aria-expanded="false">
+                <i class="fas fa-palette"></i>
+            </button>
+            <div class="palette-swatches" role="group" aria-label="Site colors">
+                <button type="button" class="palette-swatch" data-palette-choice="default" style="--swatch: #ffffff" aria-label="White"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="cream" style="--swatch: #ece6d4" aria-label="Cream"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="blue" style="--swatch: #004293" aria-label="Blue"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="green" style="--swatch: #015422" aria-label="Green"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="purple" style="--swatch: #36004e" aria-label="Purple"></button>
+            </div>
+        </div>
+    </div>
 
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=14"></script>
     <script>
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const delay = entry.target.getAttribute('data-delay') || 0;
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, delay);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('[data-animate]').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
 
         // Gallery lightbox
         document.querySelectorAll('.gallery-item').forEach(item => {

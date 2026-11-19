@@ -2,6 +2,9 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <script>document.documentElement.dataset.theme = 'light'; try { var p = localStorage.getItem('palette'); if (/^(cream|blue|green|purple)$/.test(p)) document.documentElement.dataset.palette = p; } catch (e) {}</script>
+    <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro');</script>
+    <script>(function () { var page = { about: 'about-details.html', projects: 'projects.html', skills: 'skills.html', achievements: 'achievements.html', gallery: 'gallery.html', contact: 'contact.html' }[location.hash.slice(1)]; if (page) location.replace(page); })();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamim</title>
 
@@ -9,30 +12,30 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
 
     <!-- SEO -->
-    <meta name="description" content="Tamim Hasan, certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact. Explore projects, skills, and achievements.">
-    <meta name="keywords" content="Tamim Hasan, ScrumMaster, Tech Innovator, Business Analyst, Portfolio, VR Developer, Federation University">
-    <meta name="author" content="Tamim Hasan">
+    <meta name="description" content="Tamim, certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact. Explore projects, skills, and achievements.">
+    <meta name="keywords" content="Tamim, ScrumMaster, Tech Innovator, Business Analyst, Portfolio, VR Developer, Federation University">
+    <meta name="author" content="Tamim">
     <link rel="canonical" href="https://tamim.live/">
 
     <!-- Open Graph (social media previews) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tamim.live/">
-    <meta property="og:title" content="Tamim Hasan | Tech Innovator & ScrumMaster">
+    <meta property="og:title" content="Tamim | Tech Innovator & ScrumMaster">
     <meta property="og:description" content="Certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact.">
     <meta property="og:image" content="https://tamim.live/assets/tamim.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tamim Hasan | Tech Innovator & ScrumMaster">
+    <meta name="twitter:title" content="Tamim | Tech Innovator & ScrumMaster">
     <meta name="twitter:description" content="Certified ScrumMaster, tech innovator, and business analyst turning data and empathy into real-world impact.">
     <meta name="twitter:image" content="https://tamim.live/assets/tamim.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=36">
 
 </head>
 <body class="hero-light">
@@ -41,48 +44,19 @@
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <span class="logo-mark">TH</span>
-                <span class="logo-text">Tamim Hasan</span>
+                <span class="logo-text">Tamim</span>
             </a>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li class="nav-item-dropdown">
-                    <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                        Tools <i class="fas fa-chevron-down dropdown-chevron"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-label">Free Utilities</div>
-                        <a href="merge-pdf.html" class="dropdown-item">
-                            <i class="fas fa-file-pdf dropdown-item-icon"></i>
-                            <span>PDF Merger</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#contact" class="dropdown-item">
-                            <i class="fas fa-envelope dropdown-item-icon"></i>
-                            <span>Request a Tool</span>
-                        </a>
-                    </div>
-                </li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about-details.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Showcase</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
-
             <div class="nav-actions">
-                <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
-                    <i class="fas fa-expand"></i>
-                    <i class="fas fa-compress"></i>
-                </button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </button>
                 <button class="hamburger" id="hamburger" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -91,675 +65,153 @@
         </div>
     </nav>
 
+    <main class="main-content">
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content" data-animate="fade-up">
-                <div class="hero-badge">
-                    <span class="badge-pulse"></span>
-                    <span>Hi,</span>
+        <div class="hero-slider">
+            <div class="hero-track">
+                <div class="hero-slide">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1 class="hero-title hero-intro">
+                            I’m Tamim, a technologist and Certified ScrumMaster®.<br>
+                            I bring people, data, and technology together to solve real problems.
+                        </h1>
+
+                        <p class="hero-current">
+                            Currently at <strong>Federation University Australia</strong>.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="projects.html" class="btn btn-primary">
+                                View Projects
+                            </a>
+                            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+                        </div>
+
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="geometric-profile">
+                            <div class="geo-image-container">
+                                <img src="assets/n1-clean.webp?v=3" alt="Tamim" class="geo-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
 
-                <h1 class="hero-title">
-                    I am <span class="text-gradient">Tamim Hasan,</span>
-                </h1>
+                <div class="hero-slide" aria-hidden="true" inert>
+                    <div class="hero-container">
+                        <div class="hero-content">
+                            <p class="hero-project-label">Featured Project</p>
+                            <h2 class="hero-project-title">VicHealth Anti-Vaping VR</h2>
+                            <p class="hero-project-text">An immersive educational VR experience built with Meta Quest 3, Unity, and Blender.</p>
+                            <div class="hero-actions">
+                                <a href="vr-project.html" class="btn btn-primary">View Project</a>
+                                <a href="projects.html" class="btn btn-secondary">All Projects</a>
+                            </div>
+                        </div>
 
-                <p class="hero-subtitle">
-                    a certified ScrumMaster®, tech innovator, and community-driven leader
-                </p>
-
-                <p class="hero-description">
-                    Passionate about turning data and empathy into real-world impact.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">
-                        View Projects <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-                </div>
-
-            </div>
-
-            <div class="hero-visual" data-animate="fade-up" data-delay="200">
-                <div class="geometric-profile">
-                    <div class="geo-image-container">
-                        <img src="assets/n1-clean.webp?v=3" alt="Tamim Hasan" class="geo-image">
+                        <div class="hero-visual">
+                            <div class="geometric-profile">
+                                <div class="geo-image-container">
+                                    <img src="assets/Tutorial%20Environment.png" alt="Beyond the Vape VR tutorial environment" class="hero-project-image" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="hero-bar" role="group" aria-label="Homepage highlights">
+            <button type="button" class="hero-segment" data-dwell="2500" aria-label="Show introduction"></button>
+            <button type="button" class="hero-segment" data-dwell="4500" aria-label="Show featured project"></button>
         </div>
     </section>
 
-<section id="about" class="about section-padding">
-    <div class="container">
-        <div class="section-header" data-animate="fade-up">
-            <span class="section-tag">About Me</span>
-            <h2 class="section-title">Building With Purpose,<br>Leading With Empathy</h2>
-        </div>
-
-        <div class="about-grid-modern">
-            <!-- Left: Visual Story -->
-            <div class="about-visual-story" data-animate="fade-right">
-                <div class="image-collage">
-                    <div class="image-main">
-                        <img src="assets/n2-clean.webp" alt="Tamim Hasan Portrait" class="img-main" loading="lazy">
-                        <div class="image-accent-shape"></div>
-                    </div>
-                </div>
+    <section class="explore section-padding" aria-labelledby="explore-title">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Explore</span>
+                <h2 class="section-title" id="explore-title">Take a Closer Look</h2>
             </div>
 
-            <!-- Right: Content -->
-            <div class="about-content-modern" data-animate="fade-left">
-
-
-                <div class="info-cards-grid">
-                    <div class="info-card-modern">
-                        <div class="card-content">
-                            <h3>Technical Excellence</h3>
-                            <p>Dean's Commendation for Master's. Built VR anti-vaping experiences, EV predictive analytics, and AI-powered health apps.</p>
-                        </div>
-                    </div>
-
-                    <div class="info-card-modern">
-                        <div class="card-content">
-                            <h3>Leadership & Voice</h3>
-                            <p>Chair of Student Senate, TEQSA 2024 representative. Recipient of 3 Federation Advantage Awards.</p>
-                        </div>
-                    </div>
-
-                    <div class="info-card-modern">
-                        <div class="card-content">
-                            <h3>Service & Empathy</h3>
-                            <p>2+ years customer service experience. 60+ volunteer hours with RISE Crew, BARS, BRMC, Salvation Army.</p>
-                        </div>
-                    </div>
+            <div class="explore-grid">
+            <a href="projects.html" class="explore-card explore-card--wide" data-animate="fade-up" data-delay="0">
+                <div class="explore-media">
+                    <img src="assets/Tutorial%20Environment.png" alt="" loading="lazy">
                 </div>
-                <a href="about-details.html"  class="btn btn-primary">
-                        To know more about me <i class="fas fa-arrow-right"></i>
-                    </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="projects" class="projects section-padding">
-    <div class="container">
-        <div class="section-header" data-animate="fade-up">
-            <span class="section-tag">Portfolio</span>
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">15+ projects spanning VR development, data analytics, AI/ML, and business process optimization</p>
-        </div>
-
-        <div class="projects-wrapper">
-            <!-- Featured Project -->
-             <a href="vr-project.html" style="text-decoration: none; display: block;">
-                <div class="project-featured" data-animate="fade-up">
-                    <div class="project-image">
-                        <div class="project-frame">
-                            <img src="assets/Tutorial%20Environment.png" alt="Beyond the Vape VR tutorial environment" class="project-frame-img" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="project-details">
-                        <span class="project-label">Featured Project</span>
-
-                        <h3 class="project-title">VicHealth Anti-Vaping VR</h3>
-                        <p class="project-desc">An immersive educational VR experience using Meta Quest 3, Unity, and Blender. Developed as part of Federation University's Student Wellbeing initiative to reduce vaping among students aged 17-30 through engaging, game-based learning.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Unity</span>
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">Blender</span>
-                            <span class="tech-tag">VR</span>
-                            <span class="tech-tag">Mattercraft</span>
-                        </div>
-                    </div>
+                <div class="explore-copy">
+                    <span class="explore-label">Projects</span>
+                    <h3>Featured Projects</h3>
+                    <p>15+ projects spanning VR development, data analytics, AI/ML, and business process optimization.</p>
                 </div>
             </a>
-
-
-
-            <!-- Carousel Container -->
-            <div class="projects-carousel-container" data-animate="fade-up" data-delay="200">
-                <div class="carousel-header">
-                    <h3 class="carousel-title">More Projects</h3>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous projects">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="carousel-dots" id="carouselDots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
-                        <button class="carousel-btn next" id="nextBtn" aria-label="Next projects">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
+            <a href="about-details.html" class="explore-card" data-animate="fade-up" data-delay="80">
+                <span class="explore-label">About</span>
+                <h3>Building With Purpose</h3>
+                <p>My journey, experience, and the people-first way I lead.</p>
+            </a>
+            <a href="skills.html" class="explore-card" data-animate="fade-up" data-delay="0">
+                <span class="explore-label">Skills</span>
+                <h3>Skills &amp; Technologies</h3>
+                <p>Data science, project management, software, VR, and web development.</p>
+            </a>
+            <a href="gallery.html" class="explore-card explore-card--wide" data-animate="fade-up" data-delay="80">
+                <div class="explore-media">
+                    <img src="assets/1.webp" alt="" loading="lazy">
                 </div>
-
-                <div class="carousel-wrapper">
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- Project 1 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image blue-gradient">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Data Analytics</span>
-                                    <h4>EV Adoption Analytics</h4>
-                                    <p>Analyzed EV registration trends across 39 counties (18,769 records). Built 4 dashboards predicting 15% increase in EV adoption.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">Tableau</span>
-                                        <span class="tech-tag">Power BI</span>
-                                        <span class="tech-tag">Python</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image orange-gradient">
-                                    <i class="fas fa-sitemap"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Business Process</span>
-                                    <h4>Business Process Modelling</h4>
-                                    <p>Enterprise process optimization and modeling for operational efficiency.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">BPMN</span>
-                                        <span class="tech-tag">Process Analysis</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image green-gradient">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">App Development</span>
-                                    <h4>Heartland Equestrian Centre</h4>
-                                    <p>Mobile app development project with 50+ tasks, Gantt charts, and 25% ROI achieved.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">Project Management</span>
-                                        <span class="tech-tag">Agile</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 4 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image pink-gradient">
-                                    <i class="fas fa-bicycle"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">ERP Research</span>
-                                    <h4>Global Bike Group ERP</h4>
-                                    <p>Evaluated SAP S/4HANA, Oracle ERP Cloud, and Microsoft Dynamics for supply chain management.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">SAP</span>
-                                        <span class="tech-tag">ERP</span>
-                                        <span class="tech-tag">Research</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 5 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image red-gradient">
-                                    <i class="fas fa-link"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Blockchain</span>
-                                    <h4>Blockchain in Supply Chains</h4>
-                                    <p>Research on blockchain integration for sustainability. Identified 7 adoption barriers and 5 recommendations.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">Blockchain</span>
-                                        <span class="tech-tag">Sustainability</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 6 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image teal-gradient">
-                                    <i class="fas fa-fingerprint"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Research</span>
-                                    <h4>Biometrics Impact Study</h4>
-                                    <p>Privacy & Public Perception in Supermarket Shopping - research on biometric technology acceptance.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">Research</span>
-                                        <span class="tech-tag">Privacy</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 7 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image indigo-gradient">
-                                    <i class="fas fa-lungs"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Deep Learning</span>
-                                    <h4>COVID-19 & TB Classification</h4>
-                                    <p>CNN, MobileNetV2, ResNet50 models achieving 99% accuracy for X-ray image classification.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">Deep Learning</span>
-                                        <span class="tech-tag">CNN</span>
-                                        <span class="tech-tag">Healthcare AI</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 8 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image cyan-gradient">
-                                    <i class="fas fa-truck"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Supply Chain</span>
-                                    <h4>Supply Chain Optimization</h4>
-                                    <p>DataCo Global supply chain analysis using ML for demand forecasting and inventory optimization.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">ML</span>
-                                        <span class="tech-tag">Power BI</span>
-                                        <span class="tech-tag">Optimization</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 9 -->
-                        <div class="carousel-slide">
-                            <div class="project-card">
-                                <div class="card-image rose-gradient">
-                                    <i class="fas fa-heartbeat"></i>
-                                </div>
-                                <div class="card-body">
-                                    <span class="card-category">Healthcare AI</span>
-                                    <h4>Cardio Predict</h4>
-                                    <p>Web-integrated ML approach for cardiac health surveillance using Explainable AI. 94% accuracy.</p>
-                                    <div class="tech-tags small">
-                                        <span class="tech-tag">Python</span>
-                                        <span class="tech-tag">XAI</span>
-                                        <span class="tech-tag">Random Forest</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="explore-copy">
+                    <span class="explore-label">Gallery</span>
+                    <h3>Moments &amp; Memories</h3>
+                    <p>Photos from milestones, events, and the journey so far.</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-  <section id="skills" class="skills section-padding">
-    <div class="container">
-        <div class="section-header" data-animate="fade-up">
-            <span class="section-tag">Expertise</span>
-            <h2 class="section-title">Skills & Technologies</h2>
-        </div>
-
-        <div class="skills-grid-comprehensive">
-            <!-- Data Science & Analytics -->
-            <div class="skill-category" data-animate="fade-up" data-delay="100">
-                <div class="skill-header-modern">
-                    <div class="skill-title-wrap">
-                        <h3>Data Science & Analytics</h3>
-                        <p>Machine Learning, Deep Learning, Data Visualization</p>
-                    </div>
-                </div>
-                <div class="skill-tags-modern">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">Matplotlib</span>
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">Deep Learning</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Tableau</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">Google Colab</span>
-                    <span class="skill-tag">Data Analysis</span>
-                </div>
-            </div>
-
-            <!-- Project & Product Management -->
-            <div class="skill-category" data-animate="fade-up" data-delay="150">
-                <div class="skill-header-modern">
-                    <div class="skill-title-wrap">
-                        <h3>Project & Product Management</h3>
-                        <p>Agile frameworks, Strategic Planning, ERP</p>
-                    </div>
-                </div>
-                <div class="skill-tags-modern">
-                    <span class="skill-tag highlight">Scrum</span>
-                    <span class="skill-tag highlight">Kanban</span>
-                    <span class="skill-tag">Agile</span>
-                    <span class="skill-tag">Jira</span>
-                    <span class="skill-tag">Product Road Mapping</span>
-                    <span class="skill-tag">Risk Management</span>
-                    <span class="skill-tag">Strategic Planning</span>
-                    <span class="skill-tag">Leadership</span>
-                    <span class="skill-tag">SAP S/4HANA</span>
-                    <span class="skill-tag">SAP BW</span>
-                    <span class="skill-tag">ERP</span>
-                </div>
-            </div>
-
-            <!-- Software Development & VR -->
-            <div class="skill-category" data-animate="fade-up" data-delay="200">
-                <div class="skill-header-modern">
-                    <div class="skill-title-wrap">
-                        <h3>Software Development & VR</h3>
-                        <p>Unity, Version Control, IDEs</p>
-                    </div>
-                </div>
-                <div class="skill-tags-modern">
-                    <span class="skill-tag">Unity</span>
-                    <span class="skill-tag">C#</span>
-                    <span class="skill-tag">Virtual Reality</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">Bitbucket</span>
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">Eclipse</span>
-                    <span class="skill-tag">NetBeans</span>
-                    <span class="skill-tag">Anaconda</span>
-                    <span class="skill-tag">AutoCAD</span>
-                </div>
-            </div>
-
-            <!-- Web Development -->
-            <div class="skill-category" data-animate="fade-up" data-delay="250">
-                <div class="skill-header-modern">
-                    <div class="skill-title-wrap">
-                        <h3>Web & Mobile Development</h3>
-                        <p>Full-stack, Android, PHP</p>
-                    </div>
-                </div>
-                <div class="skill-tags-modern">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">Laravel</span>
-                    <span class="skill-tag">Android Development</span>
-                    <span class="skill-tag">Java</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="achievements" class="achievements section-padding">
-    <div class="container">
-        <div class="section-header" data-animate="fade-up">
-            <span class="section-tag">Recognition</span>
-            <h2 class="section-title">Awards & Achievements</h2>
-            <p class="section-subtitle">Academic excellence, leadership recognition, and community impact</p>
-        </div>
-
-        <div class="achievements-grid">
-            <!-- Academic Excellence -->
-            <div class="achievement-card featured" data-animate="fade-up" data-delay="100">
-                <div class="achievement-content">
-                    <span class="achievement-year">2024</span>
-                    <h3>Federation Advantage Awards</h3>
-                    <p class="achievement-desc">Silver Level recognition across three categories:</p>
-                    <ul class="achievement-list">
-                        <li>Citizens Award</li>
-                        <li>Communicators Award</li>
-                        <li>Leaders Award</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Dean's Recognition -->
-            <div class="achievement-card" data-animate="fade-up" data-delay="150">
-                <div class="achievement-content">
-                    <span class="achievement-year">2024</span>
-                    <h3>Dean's Commendation</h3>
-                    <p class="achievement-desc">Master's Project completed with High Distinction. Recognized for exceptional performance in Enterprise Systems and Business Analytics.</p>
-                    <span class="achievement-issuer">Federation University Australia</span>
-                </div>
-            </div>
-
-            <!-- TEQSA Representation -->
-            <div class="achievement-card" data-animate="fade-up" data-delay="200">
-                <div class="achievement-content">
-                    <span class="achievement-year">2024</span>
-                    <h3>TEQSA 2024 Conference</h3>
-                    <p class="achievement-desc">Selected to represent Federation University at the Tertiary Education Quality and Standards Agency's 8th Annual Conference.</p>
-                    <span class="achievement-issuer">Sofitel Melbourne on Collins</span>
-                </div>
-            </div>
-
-            <!-- Academic Honors -->
-            <div class="achievement-card" data-animate="fade-up" data-delay="250">
-                <div class="achievement-content">
-                    <span class="achievement-year">2024</span>
-                    <h3>Magna Cum Laude</h3>
-                    <p class="achievement-desc">Bachelor of Computer Science completed with highest academic honors. GPA 3.72/4.00 with Machine Learning major.</p>
-                    <span class="achievement-issuer">North South University, Bangladesh</span>
-                </div>
-            </div>
-
-            <!-- Senate Recognition -->
-            <div class="achievement-card" data-animate="fade-up" data-delay="300">
-                <div class="achievement-content">
-                    <span class="achievement-year">2024</span>
-                    <h3>FedAwards Recognition</h3>
-                    <p class="achievement-desc">Acknowledged for significant contribution as Ballarat and Surrounds Student Representative and Chair of Student Senate.</p>
-                    <span class="achievement-issuer">Federation University</span>
-                </div>
-            </div>
-
-            <!-- Community Recognition -->
-            <div class="achievement-card" data-animate="fade-up" data-delay="350">
-                <div class="achievement-content">
-                    <span class="achievement-year">2024</span>
-                    <h3>Community Recognition Letter</h3>
-                    <p class="achievement-desc">Recognized for outstanding commitment and voluntary contributions to the university community.</p>
-                    <span class="achievement-issuer">Federation University</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Certifications Row -->
-        <div class="certifications-section" data-animate="fade-up" data-delay="400">
-            <h3 class="cert-title">Professional Certifications</h3>
-            <div class="cert-grid">
-                <div class="cert-item">
-                    <span>Certified ScrumMaster (CSM)</span>
-                </div>
-                <div class="cert-item">
-                    <span>Product Management (PMI REP)</span>
-                </div>
-                <div class="cert-item">
-                    <span>Kanban (PMI REP)</span>
-                </div>
-
-                <div class="cert-item">
-                    <span>Working with Children Check</span>
-                </div>
-                <div class="cert-item">
-                    <span>Australian Computer Society (ACS)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="gallery" class="gallery section-padding">
-    <div class="container">
-        <div class="section-header" data-animate="fade-up">
-            <span class="section-tag">Gallery</span>
-            <h2 class="section-title">Moments & Memories</h2>
-        </div>
-    </div>
-
-    <div class="tv-gallery" id="tvGallery" role="region" aria-roledescription="carousel" aria-label="Photo gallery" data-animate="fade-up" data-delay="200">
-        <div class="tv-viewport">
-            <div class="tv-track" id="tvTrack">
-                <figure class="tv-slide">
-                    <img src="assets/1.webp" alt="Tamim Hasan gallery photo 1" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/2.webp" alt="Tamim Hasan gallery photo 2" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/3.webp" alt="Tamim Hasan gallery photo 3" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/4.webp" alt="Tamim Hasan gallery photo 4" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/5.webp" alt="Tamim Hasan gallery photo 5" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 20%">
-                    <img src="assets/6.webp" alt="Tamim Hasan gallery photo 6" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 60%">
-                    <img src="assets/7.webp" alt="Tamim Hasan gallery photo 7" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 30%">
-                    <img src="assets/8.webp" alt="Tamim Hasan gallery photo 8" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 20%">
-                    <img src="assets/9.webp" alt="Tamim Hasan gallery photo 9" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/10.webp" alt="Tamim Hasan gallery photo 10" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/11.webp" alt="Tamim Hasan gallery photo 11" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/12.webp" alt="Tamim Hasan gallery photo 12" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 30%">
-                    <img src="assets/13.webp" alt="Tamim Hasan gallery photo 13" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/14.webp" alt="Tamim Hasan gallery photo 14" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/15.webp" alt="Tamim Hasan gallery photo 15" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide">
-                    <img src="assets/16.webp" alt="Tamim Hasan gallery photo 16" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 15%">
-                    <img src="assets/17.webp" alt="Tamim Hasan gallery photo 17" loading="lazy" draggable="false">
-                </figure>
-                <figure class="tv-slide" style="--focus: 25%">
-                    <img src="assets/18.webp" alt="Tamim Hasan gallery photo 18" loading="lazy" draggable="false">
-                </figure>
-            </div>
-
-            <button class="tv-arrow prev" id="galleryPrev" aria-label="Previous photo">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="tv-arrow next" id="galleryNext" aria-label="Next photo">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div class="tv-controls">
-            <div class="tv-dots" id="galleryDots"></div>
-            <button class="tv-play" id="galleryPlay" aria-label="Pause slideshow">
-                <i class="fas fa-pause"></i>
-            </button>
-        </div>
-    </div>
-</section>
-
-    <section id="contact" class="contact section-padding">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info" data-animate="fade-right">
-                    <div class="section-header left">
-                        <span class="section-tag">Contact</span>
-                        <h2 class="section-title">Let's Connect</h2>
-                    </div>
-
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-details">
-                                <span class="method-label">Email</span>
-                                <a href="mailto:tamim.hasan9607@gmail.com">tamim.hasan9607@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="https://github.com/tamimhasan9607" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/tamim9607" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    </div>
-                </div>
-
-                <div class="contact-form-wrapper" data-animate="fade-left">
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mbdapydr" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="youremail@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        <input type="hidden" name="_replyto" value="tamim.hasan9607@gmail.com">
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span>Send Message</span> <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
+            </a>
+            <a href="achievements.html" class="explore-card explore-card--half" data-animate="fade-up" data-delay="0">
+                <span class="explore-label">Achievements</span>
+                <h3>Awards &amp; Achievements</h3>
+                <p>Academic excellence, leadership recognition, and community impact.</p>
+            </a>
+            <a href="contact.html" class="explore-card explore-card--half explore-card--accent" data-animate="fade-up" data-delay="80">
+                <span class="explore-label">Contact</span>
+                <h3>Let's Connect</h3>
+                <p>Have a project or idea in mind? Send me a message.</p>
+            </a>
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-copyright">&copy; 2026 Tamim Hasan. All rights reserved.</p>
+            <p class="footer-copyright">&copy; 2026 Tamim. All rights reserved.</p>
         </div>
     </footer>
 
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span>Message sent successfully!</span>
+    <div class="corner-controls">
+        <button class="theme-toggle fullscreen-toggle" id="fullscreenToggle" aria-label="Enter fullscreen" title="Fullscreen" hidden>
+            <i class="fas fa-expand"></i>
+            <i class="fas fa-compress"></i>
+        </button>
+        <div class="palette" id="palette">
+            <button type="button" class="palette-toggle" id="paletteToggle" aria-label="Change site colors" aria-expanded="false">
+                <i class="fas fa-palette"></i>
+            </button>
+            <div class="palette-swatches" role="group" aria-label="Site colors">
+                <button type="button" class="palette-swatch" data-palette-choice="default" style="--swatch: #ffffff" aria-label="White"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="cream" style="--swatch: #ece6d4" aria-label="Cream"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="blue" style="--swatch: #004293" aria-label="Blue"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="green" style="--swatch: #015422" aria-label="Green"></button>
+                <button type="button" class="palette-swatch" data-palette-choice="purple" style="--swatch: #36004e" aria-label="Purple"></button>
+            </div>
+        </div>
     </div>
 
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=14"></script>
 </body>
 </html>
